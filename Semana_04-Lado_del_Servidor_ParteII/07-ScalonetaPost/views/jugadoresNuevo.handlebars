@@ -1,0 +1,47 @@
+<h2>🏐 Nuevo Jugador</h2>
+
+{{#if datosEnviados}}
+<h3>Datos Enviados</h3>
+<p>{{datosEnviados}}</p>
+{{/if}}
+
+<form action="" method="POST" accept="">
+    <fieldset>
+        <div class="row">
+            <label for="dni">Documento</label>
+            <input type="text" name="dni" size="13" required />
+        </div>
+
+        <div class="row">
+            <label for="dorsal">Dorsal</label>
+            <input type="text" name="dorsal" size="5" required />
+        </div>
+
+        <div class="row">
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" size="50" required />
+        </div>
+        <div class="row">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" size="50" required />
+        </div>
+
+        <div class="row">
+            <label for="posicion">Posición</label>
+            <select name="posicion">
+                <option value="Arquero">Arquero</option>
+                <option value="Defensor">Defensor</option>
+                <option value="Mediocampista">Mediocampista</option>
+                <option value="Delantero">Delantero</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="pieHabil">Pie hábil</label>
+            <select name="pieHabil">
+                <option value="Derecho">Derecho</option>
+                <option value="Izquierdo">Izquierdo</option>
+            </select>
+        </div>
+    </fieldset>
+    <input class="btn" type="submit" value="Guardar" />
+</form>

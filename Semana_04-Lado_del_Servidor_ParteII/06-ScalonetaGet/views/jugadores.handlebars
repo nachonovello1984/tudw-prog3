@@ -1,0 +1,22 @@
+<h2>🏐 Jugadores</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th><a href="/jugadores?orden=dorsal&asc={{asc}}">Dorsal</a></th>
+            <th><a href="/jugadores?orden=apellido&asc={{asc}}">Apellido</a></th>
+            <th><a href="/jugadores?orden=nombre&asc={{asc}}">Nombre</a></th>
+            <th><a href="/jugadores?orden=pieHabil&asc={{asc}}">Pie Hábil</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each jugadores}}
+        <tr>
+            <td>{{dorsal}}</td>
+            <td>{{apellido}}</td>
+            <td>{{nombre}}</td>
+            <td>{{pieHabil}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
