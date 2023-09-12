@@ -1,0 +1,21 @@
+{
+  "name": "04_crud_mejores_practicas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/04_crud_mejores_practicas.js",
+  "scripts": {
+    "dev": "nodemon src/04_crud_mejores_practicas.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1"
+  }
+}
