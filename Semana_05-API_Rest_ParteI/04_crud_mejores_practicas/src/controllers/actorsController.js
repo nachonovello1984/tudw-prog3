@@ -3,11 +3,11 @@ const service = require("../services/actorsService");
 const findAll = async (req, res) => {
 
     //Filtros
-    const firstName = req.query.firstName;
+    const firstName = req.query.firstName; 
     const lastName = req.query.lastName;
 
     //Paginación
-    const limit = req.query.limit
+    const limit = req.query.limit;
     const offset = req.query.offset;
     const order = req.query.order;
     const asc = req.query.asc;
@@ -31,7 +31,7 @@ const findAll = async (req, res) => {
 
 const findById = async (req, res) => {
 
-    const actorId = req.params.actorId
+    const actorId = req.params.actorId;
 
     if (!actorId) {
         res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })

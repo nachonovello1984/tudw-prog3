@@ -45,7 +45,8 @@ const findAll = async (filter = null, limit = 0, offset = 0, order = "actor_id",
 const findById = async (actorId) => {
     // Defino el string de consulta
     const strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate 
-                    FROM actor WHERE actor_id = ?`;
+                    FROM actor 
+                    WHERE actor_id = ?`;
 
     // Ejecuto la consulta
     const [rows] = await pool.query(strSql, [actorId]);
