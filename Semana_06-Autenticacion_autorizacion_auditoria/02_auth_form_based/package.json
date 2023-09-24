@@ -1,0 +1,27 @@
+{
+  "name": "02_auth_form_based",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-session": "^1.0.2"
+  }
+}
