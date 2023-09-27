@@ -136,6 +136,7 @@ const chosen = async (req, res) => {
 
     if (!actorsCookie) {
         res.status(400).send({ status: "Fallo", data: { error: "Cookie no enviada" } });
+        return;
     }
 
     let data = [];

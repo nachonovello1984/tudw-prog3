@@ -1,5 +1,4 @@
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from '../Home/Home';
 import { Contacto } from '../Contacto/Contacto';
 import { Login } from '../Login/Login';
@@ -14,9 +13,9 @@ function App() {
 
   return (
     <UserProvider>
-      <BrowserRouter>
+      <Router basename="/app">
         <Routes>
-          <Route path='/' exact element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login />} />
           <Route path="/restricted/dashboard" element={
@@ -35,7 +34,7 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </UserProvider>
   );
 }

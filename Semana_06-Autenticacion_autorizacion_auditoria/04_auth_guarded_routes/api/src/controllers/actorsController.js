@@ -34,7 +34,7 @@ const findById = async (req, res) => {
     const actorId = req.params.actorId;
 
     if (!actorId) {
-        res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
+        res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } });
     }
 
     const data = await service.findById(actorId);

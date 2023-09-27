@@ -20,7 +20,7 @@ const Dashboard = () => {
             <ul>
                 <li><Link to="/restricted/actors">Ir a Actores</Link></li>
                 <ProtectedElement mustBeAdmin={true}>
-                    <li><Link to="/restricted/Films">Ir a Films</Link></li>
+                    <li><Link to="/restricted/films">Ir a Films</Link></li>
                 </ProtectedElement>
             </ul>
         </> : <></>

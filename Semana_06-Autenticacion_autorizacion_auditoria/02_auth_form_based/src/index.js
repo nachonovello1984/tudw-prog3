@@ -116,12 +116,10 @@ app.post('/login', function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
 
         if (err) {
-            console.log("entra en err")
             return next(err);
         }
 
         if (!user) {
-            console.log("entra en !user")
             return res.status(401).json({
                 err: info
             });
@@ -131,7 +129,7 @@ app.post('/login', function (req, res, next) {
 
             if (err) {
                 return res.status(500).json({
-                    err: 'Could not log in user'
+                    err: 'No se pudo hacer el login de usuario.'
                 });
             }
 
@@ -158,7 +156,7 @@ app.use((req, res) => {
 });
 
 // Página personalizada de error 500
-app.use((err, _, res, next) => {
+app.use((err, _, res) => {
     console.error(err.message);
     res.status(500);
     res.render('500');

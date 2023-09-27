@@ -16,7 +16,7 @@ const find = async (username, password) => {
     // Defino el string de consulta
     const strSql = `SELECT user_id AS userId, first_name AS firstName, last_name AS lastName 
                     FROM users u
-                    WHERE u.username = ? AND u.pass = MD5(?) AND activo = 1`;
+                    WHERE u.username = ? AND u.pass = SHA2(?, 256) AND activo = 1`;
 
     // Ejecuto la consulta
     const [rows] = await pool.query(strSql, [username, password]);
