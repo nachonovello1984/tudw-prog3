@@ -1,14 +1,13 @@
 toIPv4 = (ipV6) => {
-    // Check if the IP address is in IPv6 format (includes '::')
+    // Controla si la dirección IP tiene el formato de una dirección IPv6 (incluyendo '::')
     if (ipV6.includes(':')) {
-        // Split the IPv6 address
+        // Divide la dirección IP a partir de los dos puntos
         const parts = ipV6.split(':');
 
-        // The last part contains the IPv4 address in IPv6 format
+        // La última parte contiene la dirección IPv4 en el formato IPv6.
         return parts[parts.length - 1];
     }
 
-    // If it's already an IPv4 address, return it as is
     return ipV6;
 }
 
