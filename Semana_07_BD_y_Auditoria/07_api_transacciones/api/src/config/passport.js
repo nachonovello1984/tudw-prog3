@@ -11,7 +11,7 @@ const JWTStrategy = passportJWT.Strategy;
 passport.use(new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
-    passReqToCallback: true, // This allows you to access the request object in the strategy callback
+    passReqToCallback: true, // Esto permite acceder al objeto request en la función callback.
 },
     async (req, username, password, cb) => {
         try {
