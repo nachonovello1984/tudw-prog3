@@ -9,7 +9,7 @@ export class LinkedStack {
         this.clear();
     }
 
-    get size() {
+    size() {
         return this.#size;
     }
 
