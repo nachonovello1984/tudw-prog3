@@ -5,7 +5,7 @@ class Persona{
     }
 
     toString() {
-        return `Persona(${nombre}, ${apellido})`;
+        return `Persona(${this.nombre}, ${this.apellido})`;
     }
 }
 

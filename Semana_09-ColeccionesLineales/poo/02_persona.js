@@ -1,4 +1,5 @@
 function Persona(nombre, apellido) {
+  
   // Variables privadas (ocultas)
   let nombrePrivado = nombre;
   let apellidoPrivado = apellido;
