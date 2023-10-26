@@ -60,9 +60,8 @@ export class ArrayQueue{
         }
 
         let res = "";
-        let desde = this.#front;
 
-        for(; desde == this.#back; desde = this._incrementar(desde)){
+        for(let desde = this.#front; desde != this.#back; desde = this._incrementar(desde)){
             res += this.#items[desde] + ", ";
         }
 
