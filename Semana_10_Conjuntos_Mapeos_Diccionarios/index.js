@@ -12,7 +12,7 @@ function setClient() {
 
     console.log(`conjunto1: ${conjunto1}`);
     console.log(`conjunto1.has(9)?: ${conjunto1.has(9)}`);
-    console.log(`conjunto1.has(20)?: ${conjunto1.has(10)}`);
+    console.log(`conjunto1.has(20)?: ${conjunto1.has(20)}`);
 
     const conjunto2 = new ObjSet();
     conjunto2.add(1, 2, 3, 4, 100);
@@ -124,7 +124,7 @@ function esWeakMapClient() {
     console.log(weakMap.toString());
 }
 
-esSetClient();
+//esSetClient();
 //setClient();
 
 //mapClient();

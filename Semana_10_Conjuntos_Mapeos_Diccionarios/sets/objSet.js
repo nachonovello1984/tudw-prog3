@@ -34,7 +34,7 @@ export class ObjSet {
     }
 
     delete(element) {
-        if (!(element in this.items)) {
+        if (!(element in this.#items)) {
             return false;
         }
 
