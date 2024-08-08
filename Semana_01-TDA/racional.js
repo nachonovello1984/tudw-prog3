@@ -4,7 +4,8 @@ export class Racional {
     #denominador;
 
     constructor(numerador, denominador) {
-        if (!(Number.isInteger(numerador) && Number.isInteger(denominador) && denominador !== 0)) {
+        if (!(  Number.isInteger(numerador) && 
+                Number.isInteger(denominador) && denominador !== 0)) {
             throw new TypeError("Numerador y denominador deben ser enteros y el denominador no puede ser cero.");
         }
 
@@ -16,8 +17,23 @@ export class Racional {
         return this.#numerador;
     }
 
+    set numerador(numerador) {
+        if (!Number.isInteger(numerador)) {
+            throw new TypeError("Numerador debe ser entero.");
+        }
+
+        this.#numerador = numerador;
+    }
+
     get denominador() {
         return this.#denominador;
+    }
+
+    set denominador(denominador) {
+        if (Number.isInteger(denominador) && denominador !== 0) {
+            throw new TypeError("Denominador deben ser enteros y el denominador no puede ser cero.");
+        }
+        this.#denominador = denominador;
     }
 
     sumar(param) {
@@ -25,7 +41,9 @@ export class Racional {
             throw new TypeError("Parámetro no especificado o inválido");
         }
 
-        return new Racional((this.#numerador * param.denominador) + (this.#denominador * param.numerador), this.#denominador * param.denominador);
+        return new Racional((this.#numerador * param.denominador) + 
+                (this.#denominador * param.numerador), 
+                this.#denominador * param.denominador);
     }
 
     restar(param) {
