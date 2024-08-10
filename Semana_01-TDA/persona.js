@@ -74,7 +74,7 @@ export class Persona {
     }
 
     calcularEdad () {
-        return this.ANIO_ACTUAL - this.anioNacimiento;
+        return Persona.ANIO_ACTUAL - this.anioNacimiento;
     }
 
     toString() {
