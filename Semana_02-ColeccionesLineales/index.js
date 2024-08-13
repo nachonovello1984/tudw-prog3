@@ -32,11 +32,11 @@ function clienteLinkedList() {
 
     console.log(`list: ${list}`);
 
-    console.log('Iterador');
+    process.stdout.write('Iterador: ');
     for (let item of list) {
-        console.log(item);
+        process.stdout.write(`${item}, `);
     }
-
+    console.log();
     console.log("Inicia vaciado de lista:")
     while (!list.isEmpty()) {
         console.log(list.getItem(0));
@@ -137,4 +137,4 @@ function lists() {
     clienteLinkedList();
 }
 
-stacks();
+clienteLinkedList();

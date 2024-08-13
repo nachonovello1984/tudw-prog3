@@ -1,23 +1,56 @@
 import { ListNode } from '../listNode.js';
 import { equals } from '../utils.js';
 
+/**
+ * LinkedList es una implementación de Lista Enlazada No Ordenada
+ * @class
+ */
 export class LinkedList {
+
+    /**
+     * @private
+     * Define el acceso a todos los nodos de la estructura.
+     * Simplifica el diseño de algoritmos e iteradores.
+     * @type {ListNode}
+     */ 
     #header;
+
+    /**
+     * @private
+     * Indica la cantidad actual de elementos almacenados en la estructura.
+     * @type {number}
+     */
     #size;
 
+    /**
+     * Crea una nueva LinkedList vacía.
+     */
     constructor() {
         this.#header = new ListNode(null, null);
         this.#size = 0;
     }
 
+    /** Devuelve la cantidad actual de elementos en la estructura.
+     * @returns {number} El número de elementos en la lista.
+     */
     size() {
         return this.#size;
     }
 
+    /**
+     * Indica si la lista está vacía.
+     * @returns {boolean} `true` si la lista no contiene elementos caso contrario `false`.
+     */
     isEmpty() {
         return this.#size == 0;
     }
 
+    /**
+     * Obtiene el elemento en la posición indicada por index.
+     * @param {number} index - El índice del elemento a obtener.
+     * @returns {*} El elemento en el índice especificado.
+     * @throws {Error} Si el índice es inválido.
+     */
     getItem(index) {
         if (Math.abs(index) > this.#size) {
             throw new Error("Índice inválido. No se puede completar la operación solicitada.");
@@ -34,6 +67,12 @@ export class LinkedList {
         }
     }
 
+    /**
+     * Cambia por element el valor del nodo indicado por index.
+     * @param {number} index - El índice del elemento a modificar.
+     * @param {*} element - El nuevo valor del elemento.
+     * @throws {Error} Si el índice es inválido.
+     */
     setItem(index, element) {
         if (Math.abs(index) > this.#size) {
             throw new Error("Índice inválido. No se puede completar la operación solicitada.");
@@ -50,6 +89,10 @@ export class LinkedList {
         }
     }
 
+    /**
+     * Agrega nuevo elemento al final de la lista.
+     * @param {*} element - El elemento a añadir.
+     */
     append(element) {
         let actual = this.#header;
 
@@ -61,6 +104,11 @@ export class LinkedList {
         this.#size++;
     }
 
+    /**
+     * Elimina el primer elemento que coincida con el valor especificado.
+     * @param {*} element - El elemento a eliminar.
+     * @throws {Error} Si la lista está vacía.
+     */
     remove(element) {
 
         if (this.isEmpty()) {
@@ -87,6 +135,10 @@ export class LinkedList {
         this.#size--;
     }
 
+    /**
+     * Convierte la lista en un string.
+     * @returns {string} Una representación en cadena de la lista.
+     */
     toString() {
         if (this.isEmpty()) {
             return "LinkedList()";
@@ -103,6 +155,10 @@ export class LinkedList {
         return `LinkedList(${res.slice(0, -2)})`;
     }
 
+    /**
+     * Devuelve un iterador para recorrer los elementos de la lista.
+     * @returns {Iterator} Un objeto iterador.
+     */
     [Symbol.iterator]() {
         let actual = this.#header;
 
