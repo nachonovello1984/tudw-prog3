@@ -15,7 +15,7 @@ async function procesarMensajes() {
             //Confirmo que lo pude leer bien
             canal.ack(mensaje);
         }
-    });
+    }, );
 }
 try {
     procesarMensajes();
