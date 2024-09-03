@@ -1,10 +1,15 @@
 class Persona{
     #nombre;
     #apellido;
+    #oficina;
+    #jefe;
 
-    constructor (nombre, apellido) {
+    constructor (nombre, apellido, oficina, jefe) {
         this.#nombre = nombre;
         this.#apellido = apellido;
+        this.#oficina = oficina;
+        this.#jefe = jefe;
+
     }
 
     get nombre() {
@@ -23,25 +28,54 @@ class Persona{
         this.#apellido = nuevoApellido;
     }
 
+    get oficina() {
+        return this.#oficina;
+    }
+
+    set oficina(oficina) {
+        this.#oficina = oficina;
+    }
+
+    get jefe() {
+        return this.#jefe;
+    }
+
+    set jefe(jefe) {
+        this.#jefe = jefe;
+    }
+
     toString() {
-        return `Persona(${this.#nombre}, ${this.#apellido})`;
+        return `Persona(nombre:${this.#nombre}, apellido: ${this.#apellido}, oficina: ${this.#oficina}, jefe: ${this.#jefe} )`;
     }
 }
 
-const persona1 = new Persona("Ignacio", "Novello")
-console.log(persona1); //OK
-console.log(persona1.toString());
+class Oficina{
+    
+    #nombre;
+    #ciudad;
 
-const persona2 = new Persona("Cristian", "Faure")
-console.log(persona2); //OK
-console.log(persona2.toString());
+    constructor(nombre, ciudad) {
+        this.#nombre = nombre;
+        this.#ciudad = ciudad;
+    }
 
-const persona3 = new Persona("", "");
+    get nombre() {
+        return this.#nombre;
+    }
 
-persona3.nombre = "Lara";
-persona3.apellido = "Novello";
+    get ciudad() {
+        return this.#ciudad;
+    }
 
-console.log(persona3.nombre);
+    toString(){
+        return `Oficina(nombre:${this.#nombre}, ciudad: ${this.#ciudad})`;
+    }
+}
 
-console.log(persona3); //OK
-console.log(persona3.toString());
+const persona3 = new Persona("Lara", "Novello", new Oficina("CEO", "Concordia"), null);
+
+const persona1 = new Persona("Ignacio", "Novello", new Oficina("Comercial", "Concordia"), persona3);
+
+const persona2 = new Persona("Cristian", "Faure", new Oficina("Jefatura de Desagues", "Concordia"), persona1);
+console.log(`${persona2}`); //OK
+
