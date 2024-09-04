@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    background-color: #010035;
+}
+
+header div.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 1.5rem;
+}
+
+img.logo{
+    position: relative;
+    top: 15px;
+    height: 100px;
+}
+
+h1{
+    margin-top: 15px;
+    margin-left: 0.5rem;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+    span.red{
+        color: red;
+    }
+
+    blockquote{
+        display: inline;
+        color: lightblue;    
+    }
+}
+
+nav{
+    margin-top: 1rem;
+    margin-left: auto;
+}
+
+nav li{
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+nav li a, nav li a:hover, nav li a:active, nav li a:visited{
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav li a.active {
+    border-bottom: 2px solid lightblue;
+}
+
+main{
+    padding: 1rem;
+}
+
+main h2, main h3{
+    margin-bottom: 1.25rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main h2 {
+    color: #010035;
+}
+
+main h3{ 
+    color: #54a6dd;
+}
+
+main p{
+    margin-bottom: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+dl{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+dt, dd{
+    font-family: Arial, Helvetica, sans-serif;
+    flex-basis: calc(50% - 10px);
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+dt{
+    font-weight: bold;
+}
+
+table, tr, th, td{
+    padding: 1rem;
+    border-collapse: collapse;
+    border: none;
+}
+
+tr{
+    border-bottom: 1px solid #CCC;
+}
+
+th{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #010035;
+
+    a, a:active, a:hover, a:link {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+td{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
