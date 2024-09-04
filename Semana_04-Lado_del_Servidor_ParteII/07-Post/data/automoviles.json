@@ -1,0 +1,163 @@
+[
+    {
+      "id": 1,
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "anio": 2020,
+      "tipo": "Automóvil",
+      "color": "Blanco"
+    },
+    {
+      "id": 2,
+      "marca": "Volkswagen",
+      "modelo": "Golf",
+      "anio": 2019,
+      "tipo": "Automóvil",
+      "color": "Gris"
+    },
+    {
+      "id": 3,
+      "marca": "Ford",
+      "modelo": "Ranger",
+      "anio": 2021,
+      "tipo": "Camioneta",
+      "color": "Negro"
+    },
+    {
+      "id": 4,
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "anio": 2020,
+      "tipo": "Automóvil",
+      "color": "Rojo"
+    },
+    {
+      "id": 5,
+      "marca": "Fiat",
+      "modelo": "Cronos",
+      "anio": 2021,
+      "tipo": "Automóvil",
+      "color": "Azul"
+    },
+    {
+      "id": 6,
+      "marca": "Renault",
+      "modelo": "Duster",
+      "anio": 2019,
+      "tipo": "SUV",
+      "color": "Blanco"
+    },
+    {
+      "id": 7,
+      "marca": "Peugeot",
+      "modelo": "208",
+      "anio": 2020,
+      "tipo": "Automóvil",
+      "color": "Gris"
+    },
+    {
+      "id": 8,
+      "marca": "Honda",
+      "modelo": "HR-V",
+      "anio": 2019,
+      "tipo": "SUV",
+      "color": "Negro"
+    },
+    {
+      "id": 9,
+      "marca": "Nissan",
+      "modelo": "Frontier",
+      "anio": 2021,
+      "tipo": "Camioneta",
+      "color": "Rojo"
+    },
+    {
+      "id": 10,
+      "marca": "Jeep",
+      "modelo": "Renegade",
+      "anio": 2020,
+      "tipo": "SUV",
+      "color": "Azul"
+    },
+    {
+      "id": 11,
+      "marca": "Citroën",
+      "modelo": "C4 Cactus",
+      "anio": 2019,
+      "tipo": "SUV",
+      "color": "Blanco"
+    },
+    {
+      "id": 12,
+      "marca": "Hyundai",
+      "modelo": "Tucson",
+      "anio": 2020,
+      "tipo": "SUV",
+      "color": "Gris"
+    },
+    {
+      "id": 13,
+      "marca": "Kia",
+      "modelo": "Sorento",
+      "anio": 2021,
+      "tipo": "SUV",
+      "color": "Negro"
+    },
+    {
+      "id": 14,
+      "marca": "Ford",
+      "modelo": "EcoSport",
+      "anio": 2019,
+      "tipo": "SUV",
+      "color": "Rojo"
+    },
+    {
+      "id": 15,
+      "marca": "Chevrolet",
+      "modelo": "S10",
+      "anio": 2020,
+      "tipo": "Camioneta",
+      "color": "Blanco"
+    },
+    {
+      "id": 16,
+      "marca": "Fiat",
+      "modelo": "Toro",
+      "anio": 2021,
+      "tipo": "Camioneta",
+      "color": "Gris"
+    },
+    {
+      "id": 17,
+      "marca": "Volkswagen",
+      "modelo": "Amarok",
+      "anio": 2020,
+      "tipo": "Camioneta",
+      "color": "Negro"
+    },
+    {
+      "id": 18,
+      "marca": "Peugeot",
+      "modelo": "3008",
+      "anio": 2019,
+      "tipo": "SUV",
+      "color": "Azul"
+    },
+    {
+      "id": 19,
+      "marca": "Toyota",
+      "modelo": "Hilux",
+      "anio": 2021,
+      "tipo": "Camioneta",
+      "color": "Blanco"
+    },
+    {
+      "id": 20,
+      "marca": "Renault",
+      "modelo": "Kangoo",
+      "anio": 2020,
+      "tipo": "Automóvil",
+      "color": "Gris"
+    }
+  ]
+  

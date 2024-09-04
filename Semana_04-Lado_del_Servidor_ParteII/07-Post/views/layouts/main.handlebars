@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css" />
+    <title>{{{title}}}</title>
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <img class="logo" src="/img/logo.png" alt="Logo Prog3" />
+            <h1>Prog<span class="red">III</span>&nbsp;<blockquote>Automóviles</blockquote></h1>
+            <nav>
+                <ul>
+                    <li><a href="/" {{#if (eq title 'Inicio')}} class="active" {{/if}}>Inicio</a></li>
+                    <li><a href="/institucional" {{#if (eq title 'Institucional')}} class="active" {{/if}}>Institucional</a></li>
+                    <li><a href="/automoviles" {{#if (eq title 'Automóviles')}} class="active" {{/if}}>Automóviles</a></li>
+                    <li><a href="/contacto" {{#if (eq title 'Contacto')}} class="active" {{/if}}>Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+</body>
+
+</html>
+    
+</body>
+</html>

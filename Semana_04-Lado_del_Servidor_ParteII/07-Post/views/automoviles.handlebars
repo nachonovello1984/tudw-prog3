@@ -1,0 +1,28 @@
+<h2>🚘 Automóviles</h2>
+
+<div style="clear: both; margin: 2rem 0rem ">
+    <a class="btn" href="/automoviles/nuevo">Nuevo Automóvil</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th><a href="/automoviles?orden=tipo&asc={{asc}}">Tipo</a></th>
+            <th><a href="/automoviles?orden=marca&asc={{asc}}">Marca</a></th>
+            <th><a href="/automoviles?orden=modelo&asc={{asc}}">Modelo</a></th>
+            <th><a href="/automoviles?orden=anio&asc={{asc}}">Año</a></th>
+            <th><a href="/automoviles?orden=color&asc={{asc}}">Color</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each automoviles}}
+        <tr>
+            <td>{{tipo}}</td>
+            <td>{{marca}}</td>
+            <td>{{modelo}}</td>
+            <td>{{anio}}</td>
+            <td>{{color}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

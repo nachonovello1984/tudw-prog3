@@ -1,0 +1,40 @@
+<h2>🆕 Nuevo Automóvil</h2>
+
+{{#if datosEnviados}}
+<h3>Datos Enviados</h3>
+<p>{{datosEnviados}}</p>
+{{/if}}
+
+<form action="" method="POST" accept="">
+    <fieldset>
+        <div class="row">
+            <label for="tipo">Tipo</label>
+            <select name="tipo">
+                <option value="Automóvil">Automóvil</option>
+                <option value="Camioneta">Camioneta</option>
+                <option value="SUV">SUV</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="marca">Marca</label>
+            <input type="text" name="marca" size="30" required />
+        </div>
+
+        <div class="row">
+            <label for="modelo">Modelo</label>
+            <input type="text" name="modelo" size="50" required />
+        </div>
+        <div class="row">
+            <label for="anio">Año</label>
+            <input type="number" name="anio" size="4" required />
+        </div>
+
+        <div class="row">
+            <label for="color">Color</label>
+            <input type="text" name="color" size="30" required />
+        </div>
+
+    </fieldset>
+    <input class="btn" type="submit" value="Guardar" />
+</form>
