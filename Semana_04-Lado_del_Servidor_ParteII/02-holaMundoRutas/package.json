@@ -1,0 +1,14 @@
+{
+  "name": "02-holamundorutas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "02-holaMundo.js",
+  "scripts": {
+    "start" : "node 02-holaMundo.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}

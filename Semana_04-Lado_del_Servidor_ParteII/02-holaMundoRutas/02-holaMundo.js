@@ -1,5 +1,6 @@
-const http = require('http');
-const port = process.env.PORT || 3000;
+import http from 'http';
+
+const port = 3000;
 const server = http.createServer((req, res) => {
 
     //Quito los query params. Si era /institucional?nombre=Juan => queda /institucional
