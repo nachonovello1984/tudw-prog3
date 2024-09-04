@@ -1,15 +1,19 @@
-const http = require('http');
-const port = process.env.PORT || 3000;
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const port = 3000;
 
 function serveStaticFile(res, filePath, contentType, responseCode = 200) {
-    const fs = require('fs');
-    const path = require('path');
+    // Obtener el nombre del archivo y el directorio actual
+    const __filename = fileURLToPath(import.meta.url);
     const dir = path.dirname(__filename);
     fs.readFile(dir + filePath, (err, data) => {
         if (err) {
             console.log(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
-            return res.end('500 - Internal Error');
+            return res.end('500 - Error interno del servidor!');
         }
         res.writeHead(responseCode, { 'Content-Type': `${contentType}; charset=utf-8` });
         res.end(data);
@@ -36,9 +40,6 @@ const server = http.createServer((req, res) => {
             break;
         case '/img/logo.png':
             serveStaticFile(res, '/public/img/logo.png', 'image/png');
-            break;
-        case '/img/scaloni.gif':
-            serveStaticFile(res, '/public/img/scaloni.gif', 'image/gif');
             break;
         default:
             serveStaticFile(res, '/public/error404.html', 'text/html');
