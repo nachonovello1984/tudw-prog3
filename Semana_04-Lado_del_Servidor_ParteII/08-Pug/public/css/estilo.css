@@ -1,15 +1,14 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 80px;
-    background-color: #06213F;
+    height: 100px;
+    background-color: #010035;
 }
 
 header div.contenedor {
@@ -32,11 +31,15 @@ h1 {
     margin-left: 0.5rem;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-}
 
-h1 blockquote {
-    display: inline;
-    color: lightblue;
+    span.red {
+        color: red;
+    }
+
+    blockquote {
+        display: inline;
+        color: lightblue;
+    }
 }
 
 nav {
@@ -65,15 +68,7 @@ nav li a.active {
     border-bottom: 2px solid lightblue;
 }
 
-@media screen and (min-width: 600px) {
-    main {
-        margin: 0 auto;
-        width: 80%;
-    }
-}
-
 main {
-
     padding: 1rem;
 }
 
@@ -84,8 +79,7 @@ main h3 {
 }
 
 main h2 {
-    color: #06213F;
-    text-transform: uppercase;
+    color: #010035;
 }
 
 main h3 {
@@ -103,7 +97,8 @@ dl {
     flex-wrap: wrap;
 }
 
-dt, dd {
+dt,
+dd {
     font-family: Arial, Helvetica, sans-serif;
     flex-basis: calc(50% - 10px);
     padding: 10px;
@@ -115,55 +110,72 @@ dt {
     font-weight: bold;
 }
 
-th a, th a:hover th a:visited, th a:active, th a:link {
-    color: black;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-table, tr, th, td{
+table,
+tr,
+th,
+td {
+    padding: 1rem;
     border-collapse: collapse;
+    border: none;
 }
 
-table {
-    border: 1px solid lightgray;
-    border-radius: 6px;
+tr {
+    border-bottom: 1px solid #CCC;
 }
 
-table tr:nth-child(even) { 
-    background-color: lightgray;
-}
-
-th, td{
-    padding: 1rem;
-}
-
-.btn, .btn:hover, .btn:active, .btn:link, .btn:visited{
-    padding: 1rem;
+th {
     color: white;
-    font-weight: normal;
-    background-color: navy;
-    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #010035;
+
+    a,
+    a:active,
+    a:hover,
+    a:link {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+td {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn,
+.btn:link,
+.btn:hover,
+.btn:active {
+    padding: 0.5rem 1rem;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #010035;
+    border-radius: 6px;
     text-decoration: none;
 }
 
-form .row{
-    margin-bottom: 1rem;
+fieldset {
+    margin: 0 0 2rem;
+    padding: 1rem 2rem;
+    background-color: rgb(201, 242, 255);
+    border: none;
 }
 
-label{
-    display: inline-block;
-    min-width: 150px;
+div.row {
+    display: flex;
+    margin: 1rem;
 }
 
+label {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 4rem;
+}
 
-fieldset{
-    margin-bottom: 2rem;
-
-    padding: 2rem;
-
-    background-color: rgb(214, 235, 243);
-
-    border: 0;
-    border-radius: 8px;
+select,
+input[type="text"],
+input[type="number"] {
+    padding: 0.5rem 1rem;
+    border: 1px solid #CCC;
+    border-radius: 6px;
 }
