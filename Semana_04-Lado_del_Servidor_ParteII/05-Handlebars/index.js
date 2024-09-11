@@ -1,7 +1,7 @@
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 const hbs = expressHandlebars.create({
     defaultLayout: 'main',
@@ -22,7 +22,8 @@ app.use(express.static(__dirname + '/public'));
 // Rutas
 app.get('/', (req, res) => res.render('inicio', { title: 'Inicio' }));
 
-app.get('/institucional', (req, res) => res.render('institucional', { title: 'Institucional' }));
+app.get('/institucional', (req, res) => 
+    res.render('institucional', { title: 'Institucional' }));
 
 app.get('/contacto', (req, res) => {
     res.render('contacto', { title: 'Contacto' })
