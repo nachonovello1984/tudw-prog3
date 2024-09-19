@@ -1,11 +1,11 @@
 //Uso dotenv para levantar el archivo de configuración .env
-require('dotenv').config();
-
+import dotenv from 'dotenv';
 //Uso mysql2/promise para conectarme a MySQL usando promises
-const mysql = require("mysql2/promise");
+import mysql from "mysql2/promise";
+dotenv.config();
 
-// Creo el pool de conexión
-const pool = mysql.createPool({
+// Creo la conexión
+const conexion = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -19,7 +19,7 @@ const findAll = async () => {
         const sqlQuery = 'SELECT * FROM actor';
 
         // Ejecuto la consulta
-        const [rows] = await pool.query(sqlQuery);
+        const [rows] = await conexion.query(sqlQuery);
         
         return rows;
 
@@ -35,7 +35,7 @@ const findById = async (id) => {
         const sqlQuery = 'SELECT * FROM actor WHERE actor_id = ?';
 
         // Ejecuto la consulta
-        const [rows] = await pool.query(sqlQuery, [id]);
+        const [rows] = await conexion.query(sqlQuery, [id]);
         
         return rows;
 
@@ -44,6 +44,6 @@ const findById = async (id) => {
     }
 }
 
-module.exports = { findAll, findById };
+export { findAll, findById };
 
 

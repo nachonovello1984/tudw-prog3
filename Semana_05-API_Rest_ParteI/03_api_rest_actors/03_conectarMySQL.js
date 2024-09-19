@@ -1,23 +1,23 @@
 //Uso dotenv para levantar el archivo de configuración .env
-require('dotenv').config();
-
+import dotenv from 'dotenv';
 //Aislo en otro archivo la consulta a la base de datos
-const actors = require('./actors');
+import { findAll, findById } from './actors';
+import express from "express";
 
-const express = require("express");
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-app.get('/actors', async (req, res) => {
-    const results = await actors.findAll();
+app.get('/actors', async (_, res) => {
+    const results = await findAll();
 
     res.json(results);
 });
 
 app.get('/actors/:id', async (req, res) => {
     const id = req.params.id;
-    const results = await actors.findById(id);
+    const results = await findById(id);
 
     res.json(results);
 });

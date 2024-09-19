@@ -4,18 +4,22 @@
   "description": "",
   "main": "src/04_crud_mejores_practicas.js",
   "scripts": {
-    "dev": "nodemon src/04_crud_mejores_practicas.js",
+    "start": "node src/04_crud_mejores_practicas.js",
+    "dev": "node src/04_crud_mejores_practicas.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
+    "apicache": "^1.6.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.20.0",
+    "helmet": "^7.1.0",
     "mysql2": "^3.6.1",
-    "nodemon": "^3.0.1"
-  }
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "type": "module"
 }

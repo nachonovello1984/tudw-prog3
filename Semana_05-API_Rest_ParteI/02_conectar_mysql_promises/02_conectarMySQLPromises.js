@@ -1,11 +1,11 @@
 //Uso dotenv para levantar el archivo de configuración .env
-require('dotenv').config();
-
+import dotenv from 'dotenv';
 //Uso mysql2/promise para conectarme a MySQL usando promises
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2/promise';
+dotenv.config();
 
-// Creo el pool de conexión
-const pool = mysql.createPool({
+// Creo la conexión
+const conexion = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -19,7 +19,7 @@ async function getAllActors() {
     const sqlQuery = 'SELECT * FROM actor';
 
     // Ejecuto la consulta
-    const [rows] = await pool.query(sqlQuery);
+    const [rows] = await conexion.query(sqlQuery);
 
     console.log('Query results:', rows);
 

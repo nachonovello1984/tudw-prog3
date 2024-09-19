@@ -1,5 +1,7 @@
-const express = require("express");
-const actorsController = require("../../controllers/actorsController");
+import express from "express";
+import ActorsController from "../../controllers/actorsController.js";
+
+const actorsController = new ActorsController();
 
 const router = express.Router();
 
@@ -13,4 +15,4 @@ router.put("/actors/:actorId", actorsController.update);
 
 router.delete("/actors/:actorId", actorsController.destroy);
 
-module.exports = router;
+export { router };

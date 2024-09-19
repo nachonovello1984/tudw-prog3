@@ -1,11 +1,11 @@
 //Uso dotenv para levantar el archivo de configuración .env
-require('dotenv').config();
-
+import dotenv from 'dotenv'
 //Uso mysql2 para conectarme a MySQL
-const mysql = require('mysql2');
+import mysql from 'mysql2';
+dotenv.config();
 
-// Creo el pool de conexión
-const pool = mysql.createPool({
+// Creo la conexión
+const conexion = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -16,7 +16,7 @@ const pool = mysql.createPool({
 const sqlQuery = 'SELECT * FROM actor';
 
 // Ejecuto la consulta
-pool.query(sqlQuery, (queryErr, results) => {
+conexion.query(sqlQuery, (queryErr, results) => {
   if (queryErr) {
     console.error('Error ejecutando la consulta:', queryErr);
     return;
