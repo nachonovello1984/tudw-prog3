@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "./ActorsList.module.css";
+import "./ActorsList.module.css";
 
 const ActorsList = () => {
     const [actors, setActors] = useState([]);
@@ -25,7 +25,7 @@ const ActorsList = () => {
 
     const findAll = async () => {
         try {
-            const res = await fetch("http://localhost:3000/api/actors?limit=50&offset=0");
+            const res = await fetch("http://localhost:3000/api/actors?order=lastName&asc=true&limit=50&offset=0");
             if (!res.ok) {
                 throw new Error(`Error HTTP: ${res.status}`);
             }
