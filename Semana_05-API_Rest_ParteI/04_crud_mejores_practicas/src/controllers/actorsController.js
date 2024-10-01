@@ -106,7 +106,7 @@ export default class ActorsController {
 
     destroy = async (req, res) => {
 
-        const actorId = req.params.actorId
+        const actorId = req.params.actorId;
 
         if (!actorId) {
             res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
@@ -114,7 +114,7 @@ export default class ActorsController {
 
         try {
             await this.service.destroy(actorId);
-            res.status(204);
+            res.status(204).send();
         } catch (error) {
             res.status(error?.status || 500).send({ status: "Fallo", data: { error: error?.message || error } });
         }
