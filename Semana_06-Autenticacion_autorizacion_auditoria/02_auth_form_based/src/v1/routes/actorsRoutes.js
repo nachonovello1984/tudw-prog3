@@ -1,9 +1,11 @@
-const express = require("express");
-const actorsController = require("../../controllers/actorsController");
-const { isAuthenticated } = require("../../middlewares/isAuthenticated");
+import express from "express";
+import ActorsController from "../../controllers/actorsController.js";
+import isAuthenticated from "../../middlewares/isAuthenticated.js";
+
+const actorsController = new ActorsController();
 
 const router = express.Router();
 
 router.get("/actors", isAuthenticated, actorsController.findAll);
 
-module.exports = router;
+export default router;

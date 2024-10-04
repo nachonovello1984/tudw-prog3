@@ -1,11 +1,19 @@
-const User = require("./../database/user");
+import User from "./../database/user.js";
 
-const find = async (username, password) => {
-    return await User.find(username, password);
-};
+class UsersService {
 
-const findById = async (userId) => {
-    return await User.findById(userId);
-};
+    constructor() {
+        this.userDB = new User();
+    }
 
-module.exports = {find, findById};
+    find = async (username, password) => {
+        return await User.find(username, password);
+    };
+
+    findById = async (userId) => {
+        return await User.findById(userId);
+    };
+
+}
+
+export default UsersService;

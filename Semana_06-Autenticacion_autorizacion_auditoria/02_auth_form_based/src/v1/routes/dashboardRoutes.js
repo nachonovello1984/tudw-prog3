@@ -1,9 +1,10 @@
-const express = require('express');
-const dashboardController = require('./../../controllers/dashboardController.js');
-const { isAuthenticated } = require('../../middlewares/isAuthenticated.js');
+import express from 'express';
+import DashboardController from './../../controllers/dashboardController.js';
+import isAuthenticated from '../../middlewares/isAuthenticated.js';
 
 const router = express.Router();
+const dashboardController = new DashboardController();
 
 router.get('/dashboard', isAuthenticated, dashboardController.index);
 
-module.exports = router;
+export default router;

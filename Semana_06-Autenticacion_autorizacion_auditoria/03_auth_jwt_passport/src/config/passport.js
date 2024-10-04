@@ -1,42 +1,44 @@
-const passport = require('passport');
-const passportJWT = require("passport-jwt");
-const service = require('./../services/usersService');
-require('dotenv').config();
+import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
+import { Strategy as LocalStrategy } from 'passport-local';
+import UsersService from "./../services/usersService.js";
+import dotenv from "dotenv";
 
-const ExtractJWT = passportJWT.ExtractJwt;
-const LocalStrategy = require('passport-local').Strategy;
-const JWTStrategy = passportJWT.Strategy;
+dotenv.config();
 
 //Defino como se validan los usuarios
-passport.use(new LocalStrategy({
+const estrategia = new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password'
 },
-    async (username, password, cb) => {
+    async (username, password, done) => {
         try {
+            const service = new UsersService();
             const user = await service.find(username, password);
             if (!user) {
-                return cb(null, false, { message: 'Nombre de usuario y/o contraseña incorrectos.' });
+                return done(null, false, { message: 'Nombre de usuario y/o contraseña incorrectos.' });
             } else {
-                return cb(null, user, { message: 'Login correcto!' });
+                return done(null, user, { message: 'Login correcto!' });
             }
         } catch (exc) {
-            cb(exc);
+            done(exc);
         }
     }
-));
+);
 
 //Defino como se validan los tokens
-passport.use(new JWTStrategy({
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+const validacion = new JwtStrategy({
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.JWT_SECRET
 },
-    async (jwtPayload, cb) => {
+    async (jwtPayload, done) => {
+        const service = new UsersService();
         const user = await service.findById(jwtPayload.userId);
         if (user) {
-            return cb(null, user);
+            return done(null, user);
         } else {
-            return cb(null, false, { message: 'Token incorrecto.' });
+            return done(null, false, { message: 'Token incorrecto.' });
         }
     }
-));
+);
+
+export { estrategia, validacion };

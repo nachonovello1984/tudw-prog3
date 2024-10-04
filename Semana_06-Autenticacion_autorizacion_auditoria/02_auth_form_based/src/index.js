@@ -1,22 +1,27 @@
-require('dotenv').config();
-
+import dotenv from "dotenv";
 //Paquetes para hacer applicación express con handlebars
-const express = require("express");
-const expressHandlebars = require('express-handlebars');
-const path = require('path');
+import express from "express";
+import expressHandlebars from 'express-handlebars';
+
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 //Paquetes para tratar con sesiones.
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const session = require('express-session');
-const LocalStrategy = require('passport-local').Strategy;
+import passport from "passport";
+import session from 'express-session';
+import { Strategy as LocalStrategy } from 'passport-local';
 
 //Rutas
-const actorsRouter = require('./v1/routes/actorsRoutes');
-const filmsRouter = require('./v1/routes/filmsRoutes');
-const dashboardRouter = require('./v1/routes/dashboardRoutes');
+import actorsRouter from './v1/routes/actorsRoutes.js';
+import filmsRouter from './v1/routes/filmsRoutes.js';
+import dashboardRouter from './v1/routes/dashboardRoutes.js';
 
-const service = require("./services/usersService");
+import UsersService from "./services/usersService.js";
+
+dotenv.config();
+const service = new UsersService();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -42,8 +47,8 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 //***********
 // CONFIGURACIÓN SESIONES
 //***********
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -60,10 +65,7 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
 },
     (username, password, cb) => {
-        console.log("LocalStrategy");
-
         service.find(username, password).then(data => {
-            console.log("encuentra")
             if (!data) {
                 cb(null, false, { message: 'Nombre de usuario y/o contraseña incorrectos.' });
             }
@@ -84,7 +86,6 @@ passport.serializeUser((user, cb) => {
 
 passport.deserializeUser((userId, cb) => {
     console.log("deserializeUser");
-    const service = require("./services/usersService");
     service.findById(userId)
         .then(user => {
             if (!user) {

@@ -1,26 +1,34 @@
-const service = require("../services/filmsService");
 
-const findAll = async (req, res) => {
+import FilmsService from "../services/filmsService.js";
 
-    try {
-
-        const data = await service.findAll();
-
-        res.render("films", { title: "Films", data: 0 });
-
-    } catch (exc) {
-        throw exc;
+class FilmsController {
+    constructor() {
+        this.service = new FilmsService();
     }
-};
 
-const click = async (req, res) => {
-    const cantidad = req.session?.click;
-    if (cantidad) {
-        req.session.click = cantidad + 1;
-    } else {
-        req.session.click = 1;
+    findAll = async (req, res) => {
+
+        try {
+
+            const data = await this.service.findAll();
+
+            res.render("films", { title: "Films", data: 0 });
+
+        } catch (exc) {
+            throw exc;
+        }
+    };
+
+    click = async (req, res) => {
+        const cantidad = req.session?.click;
+        if (cantidad) {
+            req.session.click = cantidad + 1;
+        } else {
+            req.session.click = 1;
+        }
+        res.render("films", { title: "Films", data: req.session.click });
     }
-    res.render("films", { title: "Films", data: req.session.click });
+
 }
 
-module.exports = { findAll, click };
+export default FilmsController;

@@ -1,11 +1,13 @@
-const service = require('../services/usersService');
+import UsersService from '../services/usersService.js';
+
+const service = new UsersService();
 
 function httpAuthMiddleware(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
         res
             .status(401)
-            .setHeader('WWW-Authenticate', 'Basic realm="Authentication required"')
+            .setHeader('WWW-Authenticate', 'Basic realm="Ingreso para administradores"')
             .send('Unauthorized');
         return;
     }
@@ -28,4 +30,4 @@ function httpAuthMiddleware(req, res, next) {
     });
 }
 
-module.exports = { httpAuthMiddleware };
+export default httpAuthMiddleware;

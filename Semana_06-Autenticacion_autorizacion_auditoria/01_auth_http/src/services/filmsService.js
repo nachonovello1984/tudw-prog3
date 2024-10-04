@@ -1,6 +1,14 @@
-const Film = require("../database/film");
-const findAll = () => {
-    return Film.findAll();
-};
+import Film from "../database/film.js";
 
-module.exports = { findAll };
+class FilmsService {
+
+    constructor() {
+        this.filmDB = new Film();
+    }
+
+    findAll = async () => {
+        return await this.filmDB.findAll();
+    }
+}
+
+export default FilmsService;

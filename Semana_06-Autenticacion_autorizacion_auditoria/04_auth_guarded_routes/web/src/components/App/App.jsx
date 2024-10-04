@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from '../Home/Home';
 import { Contacto } from '../Contacto/Contacto';
 import { Login } from '../Login/Login';
@@ -11,9 +11,36 @@ import './App.css';
 
 function App() {
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Verificar si existe un token JWT válido al montar el componente
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch.post('/verify-token', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token })
+      }).then((response) => {
+        if (response.status === 200) {
+          setIsAuthenticated(true);
+        }
+      }).catch(() => {
+        setIsAuthenticated(false);
+      }).finally(() => {
+        setLoading(false);
+      });
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
   return (
     <UserProvider>
-      <Router basename="/app">
+      <Router basename="/">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path="/contacto" element={<Contacto />} />

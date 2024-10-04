@@ -1,6 +1,15 @@
-const Film = require("../database/film");
-const findAll = () => {
-    return Film.findAll();
-};
+import Film from "../database/film";
 
-module.exports = { findAll };
+class FilmsService {
+
+    constructor() {
+        this.filmDB = new Film();
+    }
+
+    findAll = () => {
+        return this.filmDB.findAll();
+    };
+
+}
+
+export default FilmsService;

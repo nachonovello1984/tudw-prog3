@@ -1,119 +1,122 @@
-const service = require("../services/actorsService");
+import ActorsService from "../services/actorsService.js";
 
-const findAll = async (req, res) => {
+class ActorsController {
 
-    //Filtros
-    const firstName = req.query.firstName; 
-    const lastName = req.query.lastName;
-
-    //Paginación
-    const limit = req.query.limit;
-    const offset = req.query.offset;
-    const order = req.query.order;
-    const asc = req.query.asc;
-
-    try {
-
-        //Si no están definidos limit y offset no hago paginación
-        let pLimit = limit ? Number(limit) : 0;
-        let pOffset = offset ? Number(offset) : 0;
-        let pOrder = order || "actorId";
-        let pAsc = asc === "false" ? false : true;
-
-        const data = await service.findAll({ firstName, lastName }, pLimit, pOffset, pOrder, pAsc);
-
-        res.send({ status: "OK", data });
-
-    } catch (exc) {
-        throw exc;
-    }
-};
-
-const findById = async (req, res) => {
-
-    const actorId = req.params.actorId;
-
-    if (!actorId) {
-        res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
+    constructor() {
+        this.service = new ActorsService();
     }
 
-    const data = await service.findById(actorId);
 
-    res.send({ status: "OK", data });
-};
+    findAll = async (req, res) => {
 
-const create = async (req, res) => {
-    const { body } = req;
+        //Filtros
+        const firstName = req.query.firstName;
+        const lastName = req.query.lastName;
 
-    if (!body.firstName || !body.lastName) {
-        res
-            .status(404)
-            .send({
-                status: "Fallo",
-                data: {
-                    error: "Uno de los siguientes datos falta o es vacío: 'firstName', 'lastName'."
-                }
-            });
-    }
+        //Paginación
+        const limit = req.query.limit;
+        const offset = req.query.offset;
+        const order = req.query.order;
+        const asc = req.query.asc;
 
-    const actor = {
-        firstName: body.firstName,
-        lastName: body.lastName
+        try {
+
+            //Si no están definidos limit y offset no hago paginación
+            let pLimit = limit ? Number(limit) : 0;
+            let pOffset = offset ? Number(offset) : 0;
+            let pOrder = order || "actorId";
+            let pAsc = asc === "false" ? false : true;
+
+            const data = await this.service.findAll({ firstName, lastName }, pLimit, pOffset, pOrder, pAsc);
+
+            res.send(data);
+
+        } catch (exc) {
+            throw exc;
+        }
     };
 
-    try {
-        const actorCreado = await service.create(actor);
-        res.status(201).send({ status: "OK", data: actorCreado });
-    } catch (error) {
-        res
-            .status(error?.status || 500)
-            .send({ status: "FAILED", data: { error: error?.message || error } });
-    }
-};
+    findById = async (req, res) => {
 
-const update = async (req, res) => {
-    const body = req.body;
-    const actorId = req.params.actorId
+        const actorId = req.params.actorId;
 
-    if (!actorId) {
-        res
-            .status(404)
-            .send({
-                status: "Fallo",
-                data: {
-                    error: "El parámetro actorId no puede ser vacío."
-                }
-            });
-    }
+        if (!actorId) {
+            res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
+        }
 
-    try {
-        const actorActualizado = await service.update(actorId, body);
-        res.send({ status: "OK", data: actorActualizado });
-    } catch (error) {
-        res.status(error?.status || 500).send({ status: "Fallo", data: { error: error?.message || error } });
-    }
-};
+        const data = await this.service.findById(actorId);
 
-const destroy = async (req, res) => {
+        res.send(data);
+    };
 
-    const actorId = req.params.actorId
+    create = async (req, res) => {
+        const { body } = req;
 
-    if (!actorId) {
-        res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
-    }
+        if (!body.firstName || !body.lastName) {
+            res
+                .status(404)
+                .send({
+                    status: "Fallo",
+                    data: {
+                        error: "Uno de los siguientes datos falta o es vacío: 'firstName', 'lastName'."
+                    }
+                });
+        }
 
-    try {
-        await service.destroy(actorId);
-        res.status(204).send({ status: "OK" });
-    } catch (error) {
-        res.status(error?.status || 500).send({ status: "Fallo", data: { error: error?.message || error } });
-    }
-};
+        const actor = {
+            firstName: body.firstName,
+            lastName: body.lastName
+        };
 
-module.exports = {
-    findAll,
-    findById,
-    create,
-    update,
-    destroy,
-};
+        try {
+            const actorCreado = await this.service.create(actor);
+            res.status(201).send(actorCreado);
+        } catch (error) {
+            res
+                .status(error?.status || 500)
+                .send({ status: "FAILED", data: { error: error?.message || error } });
+        }
+    };
+
+    update = async (req, res) => {
+        const body = req.body;
+        const actorId = req.params.actorId
+
+        if (!actorId) {
+            res
+                .status(404)
+                .send({
+                    status: "Fallo",
+                    data: {
+                        error: "El parámetro actorId no puede ser vacío."
+                    }
+                });
+        }
+
+        try {
+            const actorActualizado = await this.service.update(actorId, body);
+            res.send(actorActualizado);
+        } catch (error) {
+            res.status(error?.status || 500).send({ status: "Fallo", data: { error: error?.message || error } });
+        }
+    };
+
+    destroy = async (req, res) => {
+
+        const actorId = req.params.actorId
+
+        if (!actorId) {
+            res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
+        }
+
+        try {
+            await this.service.destroy(actorId);
+            res.status(204).send();
+        } catch (error) {
+            res.status(error?.status || 500).send({ status: "Fallo", data: { error: error?.message || error } });
+        }
+    };
+
+}
+
+export default ActorsController;

@@ -1,18 +1,17 @@
-const express = require("express");
-const bodyParser = require('body-parser');
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const v1RouterActors = require("./v1/routes/actorsRoutes.js");
+import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import { router as v1RouterActors } from "./v1/routes/actorsRoutes.js";
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(cookieParser());
 
 const corsOptions = {
     origin: 'http://localhost:3000', // Dominio permitido
-    credentials: true 
+    credentials: true
 };
 
 app.use(cors(corsOptions));

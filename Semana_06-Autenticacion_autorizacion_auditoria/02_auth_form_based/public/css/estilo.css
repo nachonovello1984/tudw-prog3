@@ -1,15 +1,14 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 80px;
-    background-color: #06213F;
+    height: 100px;
+    background-color: #010035;
 }
 
 header div.contenedor {
@@ -32,11 +31,15 @@ h1 {
     margin-left: 0.5rem;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-}
 
-h1 blockquote {
-    display: inline;
-    color: lightblue;
+    span.red {
+        color: red;
+    }
+
+    blockquote {
+        display: inline;
+        color: lightblue;
+    }
 }
 
 nav {
@@ -65,15 +68,7 @@ nav li a.active {
     border-bottom: 2px solid lightblue;
 }
 
-@media screen and (min-width: 600px) {
-    main {
-        margin: 0 auto;
-        width: 80%;
-    }
-}
-
 main {
-
     padding: 1rem;
 }
 
@@ -84,8 +79,7 @@ main h3 {
 }
 
 main h2 {
-    color: #06213F;
-    text-transform: uppercase;
+    color: #010035;
 }
 
 main h3 {
@@ -103,7 +97,8 @@ dl {
     flex-wrap: wrap;
 }
 
-dt, dd {
+dt,
+dd {
     font-family: Arial, Helvetica, sans-serif;
     flex-basis: calc(50% - 10px);
     padding: 10px;
@@ -115,13 +110,51 @@ dt {
     font-weight: bold;
 }
 
-th a, th a:hover th a:visited, th a:active, th a:link {
+table,
+tr,
+th,
+td {
+    padding: 1rem;
+    border-collapse: collapse;
+    border: none;
+}
+
+tr {
+    border-bottom: 1px solid #CCC;
+}
+
+th {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #010035;
+
+    a,
+    a:active,
+    a:hover,
+    a:link {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+td {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+th a,
+th a:hover th a:visited,
+th a:active,
+th a:link {
     color: black;
     text-transform: uppercase;
     text-decoration: none;
 }
 
-table, tr, th, td{
+table,
+tr,
+th,
+td {
     border-collapse: collapse;
 }
 
@@ -130,15 +163,20 @@ table {
     border-radius: 6px;
 }
 
-table tr:nth-child(even) { 
+table tr:nth-child(even) {
     background-color: lightgray;
 }
 
-th, td{
+th,
+td {
     padding: 1rem;
 }
 
-.btn, .btn:hover, .btn:active, .btn:link, .btn:visited{
+.btn,
+.btn:hover,
+.btn:active,
+.btn:link,
+.btn:visited {
     padding: 1rem;
     color: white;
     font-weight: normal;
@@ -147,17 +185,18 @@ th, td{
     text-decoration: none;
 }
 
-form .row{
+form .row {
     margin-bottom: 1rem;
 }
 
-label{
+label {
     display: inline-block;
     min-width: 150px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
-fieldset{
+fieldset {
     margin-bottom: 2rem;
 
     padding: 2rem;

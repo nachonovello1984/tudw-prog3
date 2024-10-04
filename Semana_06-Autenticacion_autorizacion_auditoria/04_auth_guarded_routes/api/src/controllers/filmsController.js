@@ -1,18 +1,24 @@
-const service = require("../services/filmsService");
 
-const findAll = async (req, res) => {
+import FilmsService from "../services/filmsService.js";
 
-    try {
-
-        const data = await service.findAll();
-
-        res.send({ status: "OK", data });
-
-    } catch (exc) {
-        throw exc;
+class FilmsController {
+    constructor() {
+        this.service = new FilmsService();
     }
-};
 
-module.exports = {
-    findAll
-};
+    findAll = async (req, res) => {
+
+        try {
+
+            const data = await this.service.findAll();
+
+            res.send({ status: "OK", data });
+
+        } catch (exc) {
+            throw exc;
+        }
+    };
+
+}
+
+export default FilmsController;

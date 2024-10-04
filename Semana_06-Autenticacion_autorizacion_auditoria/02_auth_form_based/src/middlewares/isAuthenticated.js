@@ -1,9 +1,9 @@
-function isAuthenticated(req, res, next) {
-    if (req.user) {
-        next();
-    } else {
+const isAuthenticated = (req, res, next) => {
+    if (!req.user) {
         res.redirect('/login');
+        return;
     }
-}
+    next();
+};
 
-module.exports = { isAuthenticated };
+export default isAuthenticated;

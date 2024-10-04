@@ -1,84 +1,79 @@
 //Uso dotenv para levantar el archivo de configuración .env
-require('dotenv').config();
+import dotenv from 'dotenv'
+import conexion from './conexion.js'
+dotenv.config();
 
-//Uso mysql2/promise para conectarme a MySQL usando promises
-const mysql = require("mysql2/promise");
+class Actor {
 
-// Creo el pool de conexión
-const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-});
+    findAll = async (filter = null, limit = 0, offset = 0, order = "actor_id", asc = "ASC") => {
 
-const findAll = async (filter = null, limit = 0, offset = 0, order = "actor_id", asc = "ASC") => {
+        // Defino el string de consulta
+        let strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate FROM actor `
 
-    // Defino el string de consulta
-    let strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate FROM actor `
-            
-    const filterValuesArray = [];
+        const filterValuesArray = [];
 
-    if (filter && Object.keys(filter).length > 0) {
-        strSql += "WHERE ";
-        for (const clave in filter) {
-            strSql += `${clave} = ? AND `;
+        if (filter && Object.keys(filter).length > 0) {
+            strSql += "WHERE ";
+            for (const clave in filter) {
+                strSql += `${clave} = ? AND `;
 
-            filterValuesArray.push(filter[clave]);
+                filterValuesArray.push(filter[clave]);
+            }
+
+            strSql = strSql.substring(0, strSql.length - 4);
         }
 
-        strSql = strSql.substring(0, strSql.length - 4);
-    }
+        strSql += ` ORDER BY ${order} ${asc}`;
 
-    strSql += ` ORDER BY ${order} ${asc}`;
-    
-    if (limit) {
-        strSql += 'LIMIT ? OFFSET ? ';
-    }
+        if (limit) {
+            strSql += 'LIMIT ? OFFSET ? ';
+        }
 
-    // Ejecuto la consulta
-    const [rows] = await pool.query(strSql, [...filterValuesArray, limit, offset]);
-    return rows;
-    
-};
+        // Ejecuto la consulta
+        const [rows] = await conexion.query(strSql, [...filterValuesArray, limit, offset]);
+        return rows;
 
-const findById = async (actorId) => {
-    // Defino el string de consulta
-    const strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate 
+    };
+
+    findById = async (actorId) => {
+        // Defino el string de consulta
+        const strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate 
                     FROM actor 
                     WHERE actor_id = ?`;
 
-    // Ejecuto la consulta
-    const [rows] = await pool.query(strSql, [actorId]);
-    
-    return rows;
-};
+        // Ejecuto la consulta
+        const [rows] = await conexion.query(strSql, [actorId]);
 
-const create = async ({firstName, lastName, lastUpdate}) => {
-    const strSql = 'INSERT INTO actor (first_name, last_name, last_update) VALUES (?, ?, ?);';
+        return rows;
+    };
 
-    await pool.query(strSql, [firstName, lastName, lastUpdate]);
+    create = async ({ firstName, lastName, lastUpdate }) => {
+        const strSql = 'INSERT INTO actor (first_name, last_name, last_update) VALUES (?, ?, ?);';
 
-    const [rows] = await pool.query('SELECT LAST_INSERT_ID() AS actorId');
+        await pool.query(strSql, [firstName, lastName, lastUpdate]);
 
-    return findById(rows[0].actorId);
-};
+        const [rows] = await conexion.query('SELECT LAST_INSERT_ID() AS actorId');
 
-const update = async (actorId, {firstName, lastName, lastUpdate}) => {
+        return findById(rows[0].actorId);
+    };
 
-    const strSql = 'UPDATE actor SET first_name = ?, last_name = ?, last_update = ? WHERE actor_id = ?';
+    update = async (actorId, { firstName, lastName, lastUpdate }) => {
 
-    await pool.query(strSql, [firstName, lastName, lastUpdate, actorId]);
+        const strSql = 'UPDATE actor SET first_name = ?, last_name = ?, last_update = ? WHERE actor_id = ?';
 
-    return findById(actorId);
-};
+        await conexion.query(strSql, [firstName, lastName, lastUpdate, actorId]);
 
-const destroy = async (actorId) => {
-    const strSql = 'DELETE FROM actor WHERE actor_id = ?';
+        return findById(actorId);
+    };
 
-    await pool.query(strSql, [actorId]);
-};
+    destroy = async (actorId) => {
+        const strSql = 'DELETE FROM actor WHERE actor_id = ?';
 
-module.exports = { findAll, findById, create, update, destroy };
+        await conexion.query(strSql, [actorId]);
+    };
+
+}
+
+export default Actor;
 
 
