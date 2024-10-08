@@ -6,7 +6,7 @@ import conexion from "./conexion.js"
 
 class Film {
 
-    findAll = async (filter = null, limit = 0, offset = 0, order = "actor_id", asc = "ASC") => {
+    findAll = async (filter = null, limit = 0, offset = 0, order = "film_id", asc = "ASC") => {
 
         // Defino el string de consulta
         let strSql = `  SELECT film_id AS filmId, title, description, release_year AS releaseYear 

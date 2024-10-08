@@ -18,7 +18,7 @@ class ActorsService {
   };
 
   findById = (id) => {
-    return Actor.findById(id);
+    return this.actorDB.findById(id);
   };
 
   create = (actor) => {
