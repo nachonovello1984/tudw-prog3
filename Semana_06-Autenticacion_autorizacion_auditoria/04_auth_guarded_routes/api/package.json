@@ -1,5 +1,5 @@
 {
-  "name": "03_auth_jwt_passport",
+  "name": "04_auth_guarded_routes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../UserContext/UserContext';
+import { jwtDecode } from "jwt-decode";
 import './Login.css';
 
 const Login = () => {
@@ -19,7 +20,8 @@ const Login = () => {
         })
             .then(res => res.json()
                 .then(res => {
-                    setUserData({ user: res.user, token: res.token });
+                    setUserData({ user: jwtDecode(res.token), token: res.token });
+                    localStorage.setItem("user", JSON.stringify({ user: jwtDecode(res.token), token: res.token }));
                     navigate('/restricted/dashboard');
                 })
                 .catch(err => console.log(err)))

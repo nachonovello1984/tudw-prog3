@@ -1,0 +1,13 @@
+div.row{ 
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 1rem;
+}
+
+div.row label {
+    width: 10rem;
+}
+
+fieldset{
+    margin: 1rem 1rem;
+}

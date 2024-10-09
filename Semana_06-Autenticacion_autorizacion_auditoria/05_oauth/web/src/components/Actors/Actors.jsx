@@ -7,8 +7,9 @@ const Actors = () => {
 
     const [actors, setActors] = useState(null);
 
+    console.log(userData.token);
+
     useEffect(() => {
-        console.log(userData);
         fetch("http://localhost:3001/api/v1/actors?limit=15", {
             method: 'GET',
             headers: {
@@ -18,7 +19,7 @@ const Actors = () => {
             setActors(data);
         }))
             .catch((err) => console.log(err));
-    }, [])
+    }, [userData])
 
     return (
         (actors?.length > 0) ?

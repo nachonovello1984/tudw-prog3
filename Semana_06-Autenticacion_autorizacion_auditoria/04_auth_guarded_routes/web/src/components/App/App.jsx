@@ -10,37 +10,9 @@ import { UserProvider } from '../UserContext/UserContext';
 import './App.css';
 
 function App() {
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Verificar si existe un token JWT válido al montar el componente
-    const token = localStorage.getItem('token');
-    if (token) {
-      fetch.post('/verify-token', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token })
-      }).then((response) => {
-        if (response.status === 200) {
-          setIsAuthenticated(true);
-        }
-      }).catch(() => {
-        setIsAuthenticated(false);
-      }).finally(() => {
-        setLoading(false);
-      });
-    } else {
-      setLoading(false);
-    }
-  }, []);
-
   return (
-    <UserProvider>
-      <Router basename="/">
+    <Router basename="/">
+      <UserProvider>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path="/contacto" element={<Contacto />} />
@@ -61,8 +33,9 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
-      </Router>
-    </UserProvider>
+      </UserProvider>
+    </Router>
+
   );
 }
 
