@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { UserContext } from '../UserContext/UserContext';
-
+import Header from '../Header/Header';
 import './Login.css';
 
 const Login = () => {
 
     const { userData, setUserData } = useContext(UserContext);
-    
+
     const handleLogin = () => {
         // Redirige a la autenticación con Google en el backend
         window.location.href = 'http://localhost:3001/auth/google';
@@ -19,18 +19,18 @@ const Login = () => {
     };
 
     return <>
-        <h1>Inicio de sesión</h1>
-        <div className="App">
-            <h1>Autenticación con Google</h1>
+        <Header />
+        <main>
+            <h2>Inicio de sesión con Google</h2>
             {userData ? (
                 <div>
                     <p>Bienvenido, {userData.displayName}</p>
-                    <button onClick={handleLogout}>Cerrar sesión</button>
+                    <button className="btn" onClick={handleLogout}>Cerrar sesión</button>
                 </div>
             ) : (
-                <button onClick={handleLogin}>Iniciar sesión con Google</button>
+                <button className="btn" onClick={handleLogin}>Iniciar sesión con Google</button>
             )}
-        </div>
+        </main>
     </>;
 
 };

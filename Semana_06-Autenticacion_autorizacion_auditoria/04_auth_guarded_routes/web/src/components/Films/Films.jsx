@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../UserContext/UserContext';
+import Header from '../Header/Header';
 
 const Films = () => {
 
@@ -14,26 +15,25 @@ const Films = () => {
                 'Authorization': `Bearer ${userData.token}`,
             },
         }).then(res => res.json().then(res => {
-            if (res.status === "OK") {
-                setFilms(res.data);
-            }
-        }))
-            .catch((err) => console.log(err));
-    }, [films])
+            setFilms(res);
+        })).catch((err) => console.log(err));
+    }, [userData.token])
 
     return (
-        (films?.length > 0) ?
-            <table>
-                <thead><tr><td>Id</td><td>Title</td></tr></thead>
-                <tbody>
-                    {films.map((value, index) => {
-                        return <tr key={index}>
-                            <td>{value.filmId}</td>
-                            <td>{value.title}</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table> : <></>);
+        <>
+            <Header />
+            {(films?.length > 0) &&
+                <table>
+                    <thead><tr><th>Id</th><th>Title</th></tr></thead>
+                    <tbody>
+                        {films.map((value, index) => {
+                            return <tr key={index}>
+                                <td>{value.filmId}</td>
+                                <td>{value.title}</td>
+                            </tr>
+                        })}
+                    </tbody>
+                </table>} </>);
 };
 
 export { Films };

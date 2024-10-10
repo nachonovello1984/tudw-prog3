@@ -12,7 +12,7 @@ class FilmsController {
 
             const data = await this.service.findAll();
 
-            res.send({ status: "OK", data });
+            res.send(data);
 
         } catch (exc) {
             throw exc;

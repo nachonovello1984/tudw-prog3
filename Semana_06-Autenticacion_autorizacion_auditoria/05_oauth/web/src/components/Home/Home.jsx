@@ -1,11 +1,22 @@
 import { Link } from 'react-router-dom';
+import Header from './../Header/Header';
 const Home = () => {
     return (
         <>
-            <h1>Hola! Haga click en "Iniciar sesión" para ingresar a la aplicación.</h1>
-            <Link to="/login">Iniciar sesión</Link>
-            <h2>Si no quiere puede contactarse con nosotros.</h2>
-            <Link to="/contacto">Contacto</Link>
+            <Header/>
+            <main>
+                <div class="contenedor">
+                    <p>Haga click en "Iniciar sesión" para ingresar a la aplicación.</p>
+                    <div style={{ clear: "both", margin: "2rem 0rem" }}>
+                        <Link to="/login" className="btn">Iniciar sesión</Link>
+                    </div>
+                    
+                    <p>Si no quiere puede contactarse con nosotros.</p>
+                    <div style={{ clear: "both", margin: "2rem 0rem" }}>
+                        <Link to="/contacto" className="btn">Contacto</Link>
+                    </div>
+                </div>
+            </main>
         </>
     );
 };
