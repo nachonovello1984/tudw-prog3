@@ -11,5 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "soap": "^1.0.0"
-  }
+  }, 
+  "type": "module"
 }
