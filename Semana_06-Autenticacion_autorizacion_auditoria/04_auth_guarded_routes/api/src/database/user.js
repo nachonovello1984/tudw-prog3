@@ -5,7 +5,7 @@ class User {
 
     find = async (username, password) => {
         // Defino el string de consulta
-        const strSql = `SELECT user_id AS userId, first_name AS firstName, last_name AS lastName 
+        const strSql = `SELECT user_id AS userId, first_name AS firstName, last_name AS lastName, rol
                     FROM users u
                     WHERE u.username = ? AND u.pass = SHA2(?, 256) AND activo = 1`;
 

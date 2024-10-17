@@ -23,12 +23,13 @@ const Dashboard = () => {
                         <dl>{userData.user.lastName}</dl>
                     </dl>
                 </fieldset>
-                <ProtectedElement>
-                    <ul>
-                        <li><Link to="/restricted/actors">Ir a Actores</Link></li>
+
+                <ul>
+                    <li><Link to="/restricted/actors">Ir a Actores</Link></li>
+                    <ProtectedElement mustBeAdmin={true}>
                         <li><Link to="/restricted/films">Ir a Films</Link></li>
-                    </ul>
-                </ProtectedElement>
+                    </ProtectedElement>
+                </ul>
             </main>
         }
     </>);

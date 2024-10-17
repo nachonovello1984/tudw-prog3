@@ -8,10 +8,10 @@ class ActorsService {
   findAll = (filter, limit, offset, order, asc) => {
 
     //Obtengo los filtros para cada campo ya con el nombre que llevan en la BD.
-    const sqlFilter = dbFieldsObj(filter);
+    const sqlFilter = this.dbFieldsObj(filter);
 
     //Idem anterior pero para el campo por el que voy a hacer las ordenaciones.
-    const sqlOrder = dbFieldsName(order);
+    const sqlOrder = this.dbFieldsName(order);
 
     const strAsc = (asc) ? "ASC " : "DESC ";
     return this.actorDB.findAll(sqlFilter, limit, offset, sqlOrder, strAsc);

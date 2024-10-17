@@ -28,7 +28,7 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/restricted/films" element={
-            <ProtectedRoute mustBeAdmin={false}>
+            <ProtectedRoute mustBeAdmin={true}>
               {<Films />}
             </ProtectedRoute>
           } />

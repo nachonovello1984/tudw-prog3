@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
