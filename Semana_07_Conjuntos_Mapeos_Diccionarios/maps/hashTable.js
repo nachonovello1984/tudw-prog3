@@ -57,7 +57,7 @@ export class HashTable {
         const tableKey = this.#toStrFn(key);
         let hash = 5381;
         for (let i = 0; i < tableKey.length; i++) {
-            hash = (hash * 33) + tableKey.charCodeAt(i);
+            hash += (hash * 33) + tableKey.charCodeAt(i);
         } 
         return hash % 1013;
     }
@@ -69,7 +69,7 @@ export class HashTable {
      * @returns {number} El código hash de la clave.
      */
     hashCode(key) {
-        return this.loseloseHashCode(key);
+        return this.djb2HashCode(key);
     }
 
     /**

@@ -8,6 +8,10 @@ class FilmsController {
 
     findAll = async (req, res) => {
 
+        //Así conozco el usuario que inició sesión
+        //console.log(req.headers.authorization);
+        console.log(req.user);
+
         try {
 
             const data = await this.service.findAll();
