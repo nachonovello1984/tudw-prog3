@@ -4,23 +4,23 @@ import dotenv from 'dotenv';
 import mysql from "mysql2/promise";
 dotenv.config();
 
-// Creo la conexión
-const conexion = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-});
-
 const findAll = async () => {
     try {
+
+        // Creo la conexión
+        const conexion = await mysql.createConnection({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+        });
 
         // Defino el string de consulta
         const sqlQuery = 'SELECT * FROM actor';
 
         // Ejecuto la consulta
         const [rows] = await conexion.query(sqlQuery);
-        
+
         return rows;
 
     } catch (err) {
@@ -31,12 +31,20 @@ const findAll = async () => {
 const findById = async (id) => {
     try {
 
+        // Creo la conexión
+        const conexion = await mysql.createConnection({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+        });
+
         // Defino el string de consulta
         const sqlQuery = 'SELECT * FROM actor WHERE actor_id = ?';
 
         // Ejecuto la consulta
         const [rows] = await conexion.query(sqlQuery, [id]);
-        
+
         return rows;
 
     } catch (err) {

@@ -1,8 +1,8 @@
 //Uso dotenv para levantar el archivo de configuración .env
 import dotenv from 'dotenv';
-//Aislo en otro archivo la consulta a la base de datos
-import { findAll, findById } from './actors';
 import express from "express";
+//Aislo en otro archivo la consulta a la base de datos
+import { findAll, findById } from './actors.js';
 
 dotenv.config();
 

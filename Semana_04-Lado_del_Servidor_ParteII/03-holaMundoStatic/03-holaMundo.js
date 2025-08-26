@@ -5,16 +5,24 @@ import { fileURLToPath } from 'url';
 
 const port = 3000;
 
-function serveStaticFile(res, filePath, contentType, responseCode = 200) {
+function serveStaticFile(res, filePath, contentType, responseCode = 404) {
     // Obtener el nombre del archivo y el directorio actual
     const __filename = fileURLToPath(import.meta.url);
     const dir = path.dirname(__filename);
     fs.readFile(dir + filePath, (err, data) => {
         if (err) {
             console.log(err);
-            res.writeHead(500, { 'Content-Type': 'text/plain' });
-            return res.end('500 - Error interno del servidor!');
+            if (err.errno == -4058) {
+                res.writeHead(responseCode, { 'Content-Type': 'text/plain' });
+                return res.end('404 - Recurso solicitado no encontrado!');
+            } else {
+                responseCode = 500;
+                res.writeHead(responseCode, { 'Content-Type': 'text/plain' });
+                return res.end('500 - Error interno del servidor!');
+            }
+            
         }
+        responseCode = 404;
         res.writeHead(responseCode, { 'Content-Type': `${contentType}; charset=utf-8` });
         res.end(data);
     });

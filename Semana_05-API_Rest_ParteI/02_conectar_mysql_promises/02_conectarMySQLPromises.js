@@ -4,16 +4,15 @@ import dotenv from 'dotenv';
 import mysql from 'mysql2/promise';
 dotenv.config();
 
-// Creo la conexión
-const conexion = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
 async function getAllActors() {
   try {
+    // Creo la conexión
+    const conexion = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+    });
 
     // Defino el string de consulta
     const sqlQuery = 'SELECT * FROM actor';
