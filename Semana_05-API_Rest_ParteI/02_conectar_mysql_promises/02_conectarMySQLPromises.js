@@ -22,6 +22,8 @@ async function getAllActors() {
 
     console.log('Query results:', rows);
 
+    conexion.close();
+
   } catch (err) {
     console.error('Error executing SELECT query:', err);
   }
