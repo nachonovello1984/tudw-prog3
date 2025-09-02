@@ -22,7 +22,7 @@ async function getAllActors() {
 
     console.log('Query results:', rows);
 
-    conexion.close();
+    await conexion.end();
 
   } catch (err) {
     console.error('Error executing SELECT query:', err);

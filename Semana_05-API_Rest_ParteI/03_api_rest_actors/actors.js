@@ -21,6 +21,8 @@ const findAll = async () => {
         // Ejecuto la consulta
         const [rows] = await conexion.query(sqlQuery);
 
+        await conexion.end();
+
         return rows;
 
     } catch (err) {
@@ -44,6 +46,8 @@ const findById = async (id) => {
 
         // Ejecuto la consulta
         const [rows] = await conexion.query(sqlQuery, [id]);
+
+        await conexion.end();
 
         return rows;
 
