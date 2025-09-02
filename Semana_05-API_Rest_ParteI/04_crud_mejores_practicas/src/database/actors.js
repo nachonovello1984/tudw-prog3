@@ -1,5 +1,3 @@
-//Uso mysql2/promise para conectarme a MySQL usando promises
-import mysql from "mysql2/promise";
 import BdUtils from "./dbUtils.js";
 
 export default class Actors {
