@@ -21,12 +21,17 @@ export default class ActorsController {
         try {
 
             //Si no están definidos limit y offset no hago paginación
-            let pLimit = limit ? Number(limit) : 0;
-            let pOffset = offset ? Number(offset) : 0;
-            let pOrder = order || "actorId";
-            let pAsc = asc === "false" ? false : true;
+            const pLimit = limit ? Number(limit) : 0;
+            const pOffset = offset ? Number(offset) : 0;
+            const pOrder = order || "actorId";
+            const pAsc = asc === "false" ? false : true;
 
-            const data = await this.service.findAll({ firstName, lastName }, pLimit, pOffset, pOrder, pAsc);
+            const filter = {};
+
+            if (firstName) filter.firstName = firstName;
+            if (lastName) filter.lastName = lastName;
+
+            const data = await this.service.findAll(filter, pLimit, pOffset, pOrder, pAsc);
 
             res.send(data);
 
@@ -36,11 +41,10 @@ export default class ActorsController {
     }
 
     findById = async (req, res) => {
+        const actorId = Number(req.params.actorId);
 
-        const actorId = req.params.actorId;
-
-        if (!actorId) {
-            res.status(404).send({ status: "Fallo", data: { error: "El parámetro actorId no puede ser vacío." } })
+        if (!Number.isInteger(actorId)) {
+            return res.status(400).json({ error: 'El parámetro debe ser un número entero' });
         }
 
         const data = await this.service.findById(actorId);

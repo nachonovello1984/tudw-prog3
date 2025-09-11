@@ -7,12 +7,12 @@ const router = express.Router();
 
 router.get("/actors", actorsController.findAll);
 
-router.get("/actors/:actorId", actorsController.findById);
+// router.get("/actors/:actorId", actorsController.findById);
 
-router.post("/actors", actorsController.create);
+// router.post("/actors", actorsController.create);
 
-router.put("/actors/:actorId", actorsController.update);
+// router.put("/actors/:actorId", actorsController.update);
 
-router.delete("/actors/:actorId", actorsController.destroy);
+// router.delete("/actors/:actorId", actorsController.destroy);
 
 export { router };

@@ -2,25 +2,30 @@ import BdUtils from "./dbUtils.js";
 
 export default class Actors {
 
-    findAll = async (filter = null, limit = 0, offset = 0, order = "actor_id", asc = "ASC") => {
+    findAll = async (filters = null, limit = 0, offset = 0, order = "actor_id", asc = "ASC") => {
 
         // Defino el string de consulta
-        let strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate FROM actor `
+        let strSql = `SELECT actor_id, first_name, last_name, last_update FROM actor `
 
         const filterValuesArray = [];
 
-        if (filter && Object.keys(filter).length > 0) {
+        if (filters) {
             strSql += "WHERE ";
-            for (const clave in filter) {
-                strSql += `${clave} = ? AND `;
 
-                filterValuesArray.push(filter[clave]);
+            for (const filter of filters) {
+                for (const clave of Object.keys(filter)) {
+                    strSql += `${clave} = ? AND `;
+                    filterValuesArray.push(filter[clave]);
+                }    
             }
 
+            //Quito el último AND
             strSql = strSql.substring(0, strSql.length - 4);
         }
 
-        strSql += ` ORDER BY ${order} ${asc}`;
+        if (order) {
+            strSql += ` ORDER BY ${order} ${asc}`;
+        }
 
         if (limit) {
             strSql += 'LIMIT ? OFFSET ? ';
@@ -39,9 +44,7 @@ export default class Actors {
 
     findById = async (actorId) => {
         // Defino el string de consulta
-        const strSql = `SELECT actor_id AS actorId, first_name AS firstName, last_name AS lastName, last_update AS lastUpdate 
-                    FROM actor 
-                    WHERE actor_id = ?`;
+        const strSql = `SELECT actor_id, first_name, last_name, last_update FROM actor WHERE actor_id = ?`;
 
         const conexion = await BdUtils.initConnection();
 

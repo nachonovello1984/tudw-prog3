@@ -1,36 +1,42 @@
 import Actors from "../database/actors.js";
+import ActorDTO from "../database/actorDTO.js";
 
 export default class ActorsServices {
 
-  constructor(){
+  constructor() {
     this.actors = new Actors();
   }
 
-  findAll = (filter, limit, offset, order, asc) => {
+  findAll = async (filter, limit, offset, order, asc) => {
 
     //Obtengo los filtros para cada campo ya con el nombre que llevan en la BD.
-    const sqlFilter = this.dbFieldsObj(filter);
+    const sqlFilter = ActorDTO.toDBFields(filter);
 
-    //Idem anterior pero para el campo por el que voy a hacer las ordenaciones.
-    const sqlOrder = this.dbFieldsName(order);
+    //Idem anterior pero para el campo por el que voy a hacer las ordenaciones.   
+    const sqlOrder = ActorDTO.getFieldName(order);
 
     const strAsc = (asc) ? "ASC " : "DESC ";
-    return this.actors.findAll(sqlFilter, limit, offset, sqlOrder, strAsc);
+    const tableResults = await this.actors.findAll(sqlFilter, limit, offset, sqlOrder, strAsc);
+
+    const dtoResults = tableResults.map(row => new ActorDTO(row["actor_id"], row["first_name"], row["last_name"], row["last_update"]));
+
+    return dtoResults;
   }
 
-  findById = (id) => {
-    return this.actors.findById(id);
+  findById = async (id) => {
+    const row = await this.actors.findById(id);
+    return new ActorDTO(row["actor_id"], row["first_name"], row["last_name"], row["last_update"]);
   }
 
-  create = (actor) => {
+  create = async (actor) => {
     const actorToInsert = {
       ...actor,
       lastUpdate: new Date().toISOString().replace('T', ' ').replace('Z', '')
     }
-    return actor.create(actorToInsert);
+    return this.actors.create(actorToInsert);
   }
 
-  update = (actorId, actor) => {
+  update = async (actorId, actor) => {
     const actorToUpdate = {
       ...actor,
       lastUpdate: new Date().toISOString().replace('T', ' ').replace('Z', '')
@@ -38,41 +44,8 @@ export default class ActorsServices {
     return this.actors.update(actorId, actorToUpdate);
   }
 
-  destroy = (actorId) => {
-    this.actors.destroy(actorId)
+  destroy = async (actorId) => {
+    this.actors.destroy(actorId);
   }
 
-  dbFieldsObj = (objeto) => {
-    let res = {};
-
-    for (const clave in objeto) {
-      if (!objeto[clave]) {
-        continue;
-      }
-
-      const nuevaClave = this.dbFieldsName(clave);
-      const nuevoJSON = JSON.parse(`{"${nuevaClave}" : "${objeto[clave]}"}`);
-      res = { ...res, ...nuevoJSON };
-    }
-    return res;
-  }
-
-
-  dbFieldsName = (objFieldName) => {
-    let res = "actor_id";
-
-    switch (objFieldName) {
-      case "actorId":
-        res = "actor_id";
-        break;
-      case "firstName":
-        res = "first_name";
-        break;
-      case "lastName":
-        res = "last_name";
-        break;
-    }
-
-    return res;
-  }
 };

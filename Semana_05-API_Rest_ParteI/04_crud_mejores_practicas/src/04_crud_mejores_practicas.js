@@ -10,8 +10,8 @@ import { router as v2Router } from "./v2/routes/actorsRoutes.js";
 const app = express();
 
 app.use(validateContentType);
-app.use(express.json());
-app.use(cors());
+app.use(express.json({ type: 'application/json' })); // solo acepta JSON
+// app.use(cors());
 app.use(helmet());
 
 
