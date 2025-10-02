@@ -11,17 +11,17 @@ const app = express();
 
 app.use(validateContentType);
 app.use(express.json({ type: 'application/json' })); // solo acepta JSON
-// app.use(cors());
+app.use(cors());
 app.use(helmet());
 
 
 // CORS opción dominios permitidos
-// const corsOptions = {
-//     origin: 'https://fcad.uner.edu.ar', // Dominio permitido
-//     optionsSuccessStatus: 200, 
-// };
+const corsOptions = {
+    origin: 'http://localhost:3001', // Dominio permitido
+    optionsSuccessStatus: 200, 
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 
 const swaggerOptions = {

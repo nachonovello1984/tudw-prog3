@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import List from '../Actors/List';
-import Chosen from '../Actors/Chosen';
+import style from './Home.module.css';
 
 const Home = () => {
     return <>

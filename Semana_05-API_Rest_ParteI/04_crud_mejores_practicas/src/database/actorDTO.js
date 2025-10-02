@@ -12,7 +12,7 @@ export default class ActorDTO {
         const claves = Object.keys(objParam);
         for (const k of claves) {
             const objNuevo = {}
-            objNuevo[getFieldName(k)] = objParam[k];
+            objNuevo[ActorDTO.getFieldName(k)] = objParam[k];
             res.push(objNuevo);
         }
     

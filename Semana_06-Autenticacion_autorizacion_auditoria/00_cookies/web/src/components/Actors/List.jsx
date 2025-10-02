@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import styles from './List.module.css';
 
 const List = () => {
 
@@ -39,7 +39,7 @@ const List = () => {
                             <td>{item.actorId}</td>
                             <td>{item.firstName}</td>
                             <td>{item.lastName}</td>
-                            <td><a onClick={(evt) => seleccionar(item.actorId)}>Seleccionar</a></td>
+                            <td><a className={styles.btn} onClick={(evt) => seleccionar(item.actorId)}>Seleccionar</a></td>
                         </tr>
                     })}
                 </tbody>

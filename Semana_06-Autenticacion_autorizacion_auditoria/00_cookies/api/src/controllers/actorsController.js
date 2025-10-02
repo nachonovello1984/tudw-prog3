@@ -138,6 +138,7 @@ class ActorsController {
     }
 
     chosen = async (req, res) => {
+        
         const actorsCookie = req.cookies?.actorsCookie;
 
         if (!actorsCookie) {

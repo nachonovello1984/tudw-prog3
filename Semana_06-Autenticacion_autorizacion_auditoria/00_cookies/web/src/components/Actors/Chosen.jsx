@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from './Chosen.module.css';
 
 const Chosen = () => {
     const [actors, setActors] = useState([]);
@@ -10,7 +11,7 @@ const Chosen = () => {
             })
             .then(res => res.json()
                 .then(response => {
-                    if (response.status != "OK") {
+                    if (response.status !== "OK") {
                         console.log(response.data.error);
                         return;
                     }

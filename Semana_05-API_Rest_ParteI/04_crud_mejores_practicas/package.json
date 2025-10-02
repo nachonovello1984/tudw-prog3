@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/04_crud_mejores_practicas.js",
   "scripts": {
-    "start": "node src/04_crud_mejores_practicas.js",
+    "start": "node src/04_crud_mejores_practicas.js --watch",
     "dev": "node src/04_crud_mejores_practicas.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
