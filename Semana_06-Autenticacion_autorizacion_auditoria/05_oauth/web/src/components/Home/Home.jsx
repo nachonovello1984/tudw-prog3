@@ -5,7 +5,7 @@ const Home = () => {
         <>
             <Header/>
             <main>
-                <div class="contenedor">
+                <div className="contenedor">
                     <p>Haga click en "Iniciar sesión" para ingresar a la aplicación.</p>
                     <div style={{ clear: "both", margin: "2rem 0rem" }}>
                         <Link to="/login" className="btn">Iniciar sesión</Link>

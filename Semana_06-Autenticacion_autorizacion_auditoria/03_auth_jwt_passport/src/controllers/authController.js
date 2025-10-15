@@ -6,7 +6,8 @@ dotenv.config();
 class AuthController {
 
     login = async (req, res) => {
-        passport.authenticate('local', { session: false }, (err, user, info) => {
+        passport.authenticate('local', { session: false }, 
+            (err, user, info) => {
             if (err || !user) {
                 return res.status(400).json({
                     message: 'Solicitud incorrecta',

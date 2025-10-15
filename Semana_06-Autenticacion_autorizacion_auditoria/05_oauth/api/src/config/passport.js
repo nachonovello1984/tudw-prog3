@@ -1,4 +1,3 @@
-import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import dotenv from "dotenv";
 
@@ -13,7 +12,6 @@ const estrategia = new GoogleStrategy(
         scope: ['profile', 'email'],
     },
     (accessToken, refreshToken, profile, done) => {
-        // Aquí puedes manejar el perfil del usuario y guardarlo en la base de datos si es necesario
         done(null, profile);
     }
 );

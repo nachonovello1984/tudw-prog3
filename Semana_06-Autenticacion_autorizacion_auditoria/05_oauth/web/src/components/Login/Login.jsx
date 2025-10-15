@@ -12,22 +12,11 @@ const Login = () => {
         window.location.href = 'http://localhost:3001/auth/google';
     };
 
-    const handleLogout = () => {
-        fetch('http://localhost:3001/api/logout')
-            .then(() => setUserData(null))
-            .catch(error => console.error('Error al cerrar sesión:', error));
-    };
-
     return <>
         <Header />
         <main>
             <h2>Inicio de sesión con Google</h2>
-            {userData ? (
-                <div>
-                    <p>Bienvenido, {userData.displayName}</p>
-                    <button className="btn" onClick={handleLogout}>Cerrar sesión</button>
-                </div>
-            ) : (
+            {userData ? (<div><p>Bienvenido, {userData.displayName}</p></div>) : (
                 <button className="btn" onClick={handleLogin}>Iniciar sesión con Google</button>
             )}
         </main>

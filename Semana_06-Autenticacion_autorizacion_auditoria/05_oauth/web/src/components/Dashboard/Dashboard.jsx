@@ -7,6 +7,8 @@ const Dashboard = () => {
 
     const { userData } = useContext(UserContext);
 
+    console.log(userData);
+
     return (
         <>
             <Header />
