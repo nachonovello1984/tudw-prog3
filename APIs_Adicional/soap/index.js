@@ -53,5 +53,5 @@ try {
   const [result] = await client["findAllAsync"](args);
   console.log(result);
 } catch (exc) {
-  console.log(err);
+  console.log(exc);
 }

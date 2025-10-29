@@ -96,8 +96,7 @@ function clienteArrayStack() {
     console.log(`stack: ${stack}`);
     console.log("Inicia vaciado de pila:")
     while (!stack.isEmpty()) {
-        console.log(stack.peek());
-        stack.pop();
+        console.log(stack.pop());
     }
     console.groupEnd();
 }
@@ -130,11 +129,13 @@ function stacks() {
 
 function queues() {
     clienteArrayQueue();
-    clienteLinkedQueue();
+    // clienteLinkedQueue();
 }
 
 function lists() {
     clienteLinkedList();
 }
 
-clienteLinkedList();
+// clienteLinkedList();
+// clienteArrayStack();
+clienteArrayQueue();

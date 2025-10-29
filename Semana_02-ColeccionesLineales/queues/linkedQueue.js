@@ -50,7 +50,7 @@ export class LinkedQueue{
      * @returns {boolean} `true` si la cola no contiene elementos, de lo contrario `false`.
      */
     isEmpty () {
-        return this.#size == 0;
+        return this.#size === 0;
     }
 
     /**

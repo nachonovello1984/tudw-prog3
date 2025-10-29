@@ -124,14 +124,14 @@ function esWeakMapClient() {
     console.log(weakMap.toString());
 }
 
-//esSetClient();
-//setClient();
+// esSetClient();
+// setClient();
 
-//mapClient();
-//mapClientLibro();
+mapClient();
+mapClientLibro();
 
-//hashTableClient();
+hashTableClient();
 
-//esMapClient();
+esMapClient();
 
-//esWeakMapClient();
+esWeakMapClient();

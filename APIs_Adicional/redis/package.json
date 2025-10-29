@@ -1,0 +1,26 @@
+{
+  "name": "redis-express-api",
+  "version": "1.0.0",
+  "description": "Express API with Redis integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --watch",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "redis",
+    "express",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "redis": "^4.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "type": "module"
+}
