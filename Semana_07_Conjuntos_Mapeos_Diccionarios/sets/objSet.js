@@ -44,7 +44,7 @@ export class ObjSet {
      */
     has(element) {
         //Alternativa no del todo segura ya que no todos los objetos derivan de Object.prototype.
-        //return this.items.hasOwnProperty(element)
+        //return this.#items.hasOwnProperty(element)
         return Object.prototype.hasOwnProperty.call(this.#items, element);
     }
 
@@ -94,7 +94,6 @@ export class ObjSet {
     clear() {
         this.#items = {};
     }
-
     /**
      * Retorna una representación en formato string del conjunto.
      * 

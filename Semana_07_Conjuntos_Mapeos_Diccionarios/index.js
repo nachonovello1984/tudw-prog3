@@ -55,6 +55,8 @@ function mapClientLibro() {
     map.set('John', 'johnsnow@email.com');
     map.set('Tyrion', 'tyrion@email.com');
 
+    console.log("Existe Khalesi?", map.hasKey("Khalesi"));
+
     console.log(`Prueba de map.forEach()`);
     map.forEach((key, value) => {
         console.log(`${key} -> ${value}`);
@@ -83,6 +85,7 @@ function esSetClient() {
     const set = new Set();
     set.add(1);
     set.add(2);
+    set.add(3);
     set.add(3);
     console.log(set.values()); 
     console.log(set.has(1)); 
@@ -127,11 +130,11 @@ function esWeakMapClient() {
 // esSetClient();
 // setClient();
 
-mapClient();
+//mapClient();
 mapClientLibro();
 
-hashTableClient();
+// hashTableClient();
 
-esMapClient();
+// esMapClient();
 
-esWeakMapClient();
+// esWeakMapClient();
