@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package automoviles;
+
+// Definición del mensaje Automovil
+message Automovil {
+  int32 id = 1;
+  string marca = 2;
+  string modelo = 3;
+  int32 anio = 4;
+  string color = 5;
+  double precio = 6;
+}
+
+// Mensaje de solicitud vacío
+message ObtenerAutomovilesRequest {}
+
+// Mensaje de respuesta con array de automóviles
+message ObtenerAutomovilesResponse {
+  repeated Automovil automoviles = 1;
+}
+
+// Definición del servicio
+service AutomovilService {
+  rpc ObtenerAutomoviles(ObtenerAutomovilesRequest) returns (ObtenerAutomovilesResponse);
+}

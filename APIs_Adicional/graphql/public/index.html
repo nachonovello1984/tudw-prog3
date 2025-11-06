@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GraphQL Sakila Client</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎬 Sakila Database - GraphQL Client</h1>
+      <p>Consultas a la base de datos Sakila usando GraphQL</p>
+    </header>
+
+    <!-- Estadísticas -->
+    <section class="stats-section">
+      <h2>📊 Estadísticas</h2>
+      <div id="stats" class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🎭</div>
+          <div class="stat-value" id="total-actors">-</div>
+          <div class="stat-label">Actores</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎬</div>
+          <div class="stat-value" id="total-films">-</div>
+          <div class="stat-label">Películas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value" id="total-customers">-</div>
+          <div class="stat-label">Clientes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📁</div>
+          <div class="stat-value" id="total-categories">-</div>
+          <div class="stat-label">Categorías</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs de navegación -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="actors">Actores</button>
+      <button class="tab-btn" data-tab="films">Películas</button>
+      <button class="tab-btn" data-tab="customers">Clientes</button>
+      <button class="tab-btn" data-tab="categories">Categorías</button>
+    </div>
+
+    <!-- Tab: Actores -->
+    <section id="actors-tab" class="tab-content active">
+      <div class="search-section">
+        <h2>🎭 Actores</h2>
+        <div class="search-bar">
+          <input type="text" id="actor-search" placeholder="Buscar actor por nombre...">
+          <button onclick="searchActors()">Buscar</button>
+          <button onclick="loadActors()">Ver Todos</button>
+        </div>
+      </div>
+      <div id="actors-list" class="data-grid"></div>
+    </section>
+
+    <!-- Tab: Películas -->
+    <section id="films-tab" class="tab-content">
+      <div class="search-section">
+        <h2>🎬 Películas</h2>
+        <div class="search-bar">
+          <input type="text" id="film-search" placeholder="Buscar película por título...">
+          <button onclick="searchFilms()">Buscar</button>
+          <select id="rating-filter" onchange="filterFilmsByRating()">
+            <option value="">Todos los ratings</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="NC-17">NC-17</option>
+          </select>
+          <button onclick="loadFilms()">Ver Todos</button>
+        </div>
+      </div>
+      <div id="films-list" class="data-grid"></div>
+    </section>
+
+    <!-- Tab: Clientes -->
+    <section id="customers-tab" class="tab-content">
+      <div class="search-section">
+        <h2>👥 Clientes</h2>
+        <div class="search-bar">
+          <input type="text" id="customer-search" placeholder="Buscar cliente por nombre...">
+          <button onclick="searchCustomers()">Buscar</button>
+          <button onclick="loadCustomers()">Ver Todos</button>
+        </div>
+      </div>
+      <div id="customers-list" class="data-grid"></div>
+    </section>
+
+    <!-- Tab: Categorías -->
+    <section id="categories-tab" class="tab-content">
+      <div class="search-section">
+        <h2>📁 Categorías</h2>
+        <button onclick="loadCategories()">Cargar Categorías</button>
+      </div>
+      <div id="categories-list" class="data-grid"></div>
+    </section>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Cargando...</p>
+    </div>
+
+    <!-- Error message -->
+    <div id="error" class="error hidden"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

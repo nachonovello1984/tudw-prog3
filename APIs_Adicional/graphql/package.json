@@ -1,0 +1,22 @@
+{
+  "name": "graphql-sakila",
+  "version": "1.0.0",
+  "description": "Servidor GraphQL con base de datos Sakila MySQL",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["graphql", "mysql", "sakila", "apollo"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.9.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "dotenv": "^17.2.3",
+    "cors": "^2.8.5",
+    "graphql": "^16.8.1"
+  }
+}
