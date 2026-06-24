@@ -130,10 +130,14 @@ export class ArrayQueue {
         }
 
         let res = "";
-
-        for(let desde = this.#front; desde != this.#back; desde = this._incrementar(desde)){
+        let desde = this.#front;
+        for(; 
+                desde != this.#back; 
+                desde = this._incrementar(desde)){
             res += this.#items[desde] + ", ";
         }
+
+        res += this.#items[desde] + ", ";
 
         return `ArrayQueue(${res.slice(0, -2)})`;
     }

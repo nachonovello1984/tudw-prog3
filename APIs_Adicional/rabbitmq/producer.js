@@ -1,35 +1,31 @@
-require('dotenv').config();
-const readline = require('readline');
-const amqp = require('amqplib');
+import 'dotenv/config';
+import { createInterface } from 'readline/promises';
+import amqp from 'amqplib';
 
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+const rl = createInterface({ input: process.stdin, output: process.stdout });
 
 async function publicarMensaje(mensaje) {
     const cola = process.env.RABBITMQ_QUEUE;
     const conexion = await amqp.connect(process.env.RABBITMQ_CONNECTION_STRING);
     const canal = await conexion.createChannel();
 
-    //Toma o crea la cola con el nombre indicado por cola.
     await canal.assertQueue(cola);
-
-    //Envío el mensaje
     canal.sendToQueue(cola, Buffer.from(mensaje));
+
+    await canal.close();
+    await conexion.close();
 }
 
 async function ingresoPorConsola() {
-    await rl.question('Ingrese un texto para enviar al consumidor ("salir" para finalizar): ', (res) => {
+    while (true) {
+        const res = await rl.question('Ingrese un texto para enviar al consumidor ("salir" para finalizar): ');
         if (res.toLowerCase() === 'salir') {
             rl.close();
-        } else {
-            publicarMensaje(res);
-            console.log("Mensaje enviado!");
-            ingresoPorConsola();
+            break;
         }
-    });
+        await publicarMensaje(res);
+        console.log("Mensaje enviado!");
+    }
 }
 
-try {
-    ingresoPorConsola();
-} catch (error) {
-    console.error('Error al publicar mensaje:', error);
-}
+ingresoPorConsola().catch(error => console.error('Error al publicar mensaje:', error));
